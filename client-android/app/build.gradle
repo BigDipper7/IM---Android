@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "org.pushtalk.android"
+        applicationId "com.eva.me"
         minSdkVersion 10
         targetSdkVersion 19
     }

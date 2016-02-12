@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.eva.me.Config;
 import com.eva.me.Constants;
-import org.pushtalk.android.R;
+import com.eva.me.R;
 import com.eva.me.utils.Logger;
 import com.eva.me.utils.MyPreferenceManager;
 import com.eva.me.utils.StringUtils;

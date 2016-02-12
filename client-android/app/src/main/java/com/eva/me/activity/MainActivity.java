@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import com.eva.me.Config;
 import com.eva.me.Constants;
 import com.eva.me.Global;
-import org.pushtalk.android.R;
+import com.eva.me.R;
 import com.eva.me.utils.HttpHelper;
 import com.eva.me.utils.Logger;
 import com.eva.me.utils.MyPreferenceManager;
@@ -238,7 +238,7 @@ public class MainActivity extends WebBaseActivity {
 		registerReceiver(mMessageReceiver, filter);
 	}
 
-	public static final String MESSAGE_RECEIVED_ACTION = "org.pushtalk.android.MESSAGE_RECEIVED_ACTION";
+	public static final String MESSAGE_RECEIVED_ACTION = "com.eva.me.MESSAGE_RECEIVED_ACTION";
 
 	public class MessageReceiver extends BroadcastReceiver {
 

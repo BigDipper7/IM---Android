@@ -3,7 +3,7 @@ package com.eva.me.web;
 import java.lang.ref.WeakReference;
 
 import com.eva.me.Global;
-import org.pushtalk.android.R;
+import com.eva.me.R;
 import com.eva.me.activity.WebBaseActivity;
 import com.eva.me.utils.DialogUtil;
 import com.eva.me.utils.Logger;

@@ -26,6 +26,7 @@ public class Config {
     static {
         serverList.put("推聊官方 (北京)", "http://111.13.48.109:10010");
         serverList.put("Local Dev", "http://192.168.3.195:10010");
+        serverList.put("Local Dev2", "http://192.168.1.106:10010");
     };
 
 }

@@ -124,7 +124,7 @@
 
         <!-- Required  . Enable it you can get statistics data with channel -->
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default" />
-        <meta-data android:name="JPUSH_APPKEY" android:value="7d431e42dfa6a6d693ac2d04" />
+        <meta-data android:name="JPUSH_APPKEY" android:value="43fde850329a226aa5536c6f" />
         
         <activity
             android:name="com.eva.me.activity.ServerConfActivity"
