@@ -1,4 +1,6 @@
-package org.pushtalk.android.utils;
+package com.eva.me.utils;
+
+import com.eva.me.Config;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -7,8 +9,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
-
-import org.pushtalk.android.Config;
 
 public class HttpHelper {
     private static final String CHARSET = "UTF-8";

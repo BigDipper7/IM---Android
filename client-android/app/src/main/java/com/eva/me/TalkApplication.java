@@ -1,9 +1,10 @@
-package org.pushtalk.android;
+package com.eva.me;
 
-import org.pushtalk.android.utils.AndroidUtil;
-import org.pushtalk.android.utils.Logger;
+import com.eva.me.utils.AndroidUtil;
+import com.eva.me.utils.Logger;
 
 import android.app.Application;
+
 import cn.jpush.android.api.JPushInterface;
 
 public class TalkApplication extends Application {

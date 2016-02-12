@@ -1,9 +1,9 @@
-package org.pushtalk.android.web;
+package com.eva.me.web;
 
 import java.lang.ref.WeakReference;
 
-import org.pushtalk.android.Config;
-import org.pushtalk.android.utils.Logger;
+import com.eva.me.Config;
+import com.eva.me.utils.Logger;
 
 import android.app.Activity;
 import android.content.Context;

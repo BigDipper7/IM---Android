@@ -1,18 +1,18 @@
-package org.pushtalk.android.service;
+package com.eva.me.service;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.pushtalk.android.Config;
-import org.pushtalk.android.Constants;
-import org.pushtalk.android.activity.MainActivity;
-import org.pushtalk.android.utils.AndroidUtil;
-import org.pushtalk.android.utils.HttpHelper;
-import org.pushtalk.android.utils.Logger;
-import org.pushtalk.android.utils.MyPreferenceManager;
-import org.pushtalk.android.utils.StringUtils;
+import com.eva.me.Config;
+import com.eva.me.Constants;
+import com.eva.me.activity.MainActivity;
+import com.eva.me.utils.AndroidUtil;
+import com.eva.me.utils.HttpHelper;
+import com.eva.me.utils.Logger;
+import com.eva.me.utils.MyPreferenceManager;
+import com.eva.me.utils.StringUtils;
 
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;

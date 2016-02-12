@@ -1,12 +1,12 @@
-package org.pushtalk.android.web;
+package com.eva.me.web;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.pushtalk.android.Config;
-import org.pushtalk.android.Global;
-import org.pushtalk.android.utils.AndroidUtil;
-import org.pushtalk.android.utils.StringUtils;
+import com.eva.me.Config;
+import com.eva.me.Global;
+import com.eva.me.utils.AndroidUtil;
+import com.eva.me.utils.StringUtils;
 
 import android.content.Context;
 import android.os.Build;
@@ -20,8 +20,8 @@ public class WebHelper {
 	public static String buildDefaultWebpageUrl(Context context, String originalWebappUrl) {
         return attachParamsToUrl(originalWebappUrl, 
             new String[]{"lang", Global.getLanguage(context) }, 
-            new String[]{"clientVersion", "" + Config.VERSION }, 
-            new String[]{"udid", "" + AndroidUtil.getUdid(context) }, 
+            new String[]{"clientVersion", "" + Config.VERSION },
+            new String[]{"udid", "" + AndroidUtil.getUdid(context) },
             new String[]{"osVersion", Build.VERSION.SDK_INT + ""},
             new String[]{"os", "android"});
 	}

@@ -1,16 +1,16 @@
-package org.pushtalk.android.activity;
+package com.eva.me.activity;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.pushtalk.android.Config;
-import org.pushtalk.android.Constants;
+import com.eva.me.Config;
+import com.eva.me.Constants;
 import org.pushtalk.android.R;
-import org.pushtalk.android.utils.Logger;
-import org.pushtalk.android.utils.MyPreferenceManager;
-import org.pushtalk.android.utils.StringUtils;
+import com.eva.me.utils.Logger;
+import com.eva.me.utils.MyPreferenceManager;
+import com.eva.me.utils.StringUtils;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -209,7 +209,7 @@ public class ServerConfActivity extends Activity {
 			serverName.requestFocus();
 		} else if (StringUtils.isEmpty(host)) {
 			serverHost.requestFocus();
-		} else if (!org.pushtalk.android.utils.StringUtils.isInteger(port)) {
+		} else if (!StringUtils.isInteger(port)) {
 			serverPort.requestFocus();
 		} else {
 			Logger.v(TAG, "Add server start");

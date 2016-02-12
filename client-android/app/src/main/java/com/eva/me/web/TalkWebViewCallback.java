@@ -1,10 +1,10 @@
-package org.pushtalk.android.web;
+package com.eva.me.web;
 
 import java.lang.ref.WeakReference;
 
-import org.pushtalk.android.utils.DialogUtil;
-import org.pushtalk.android.utils.JavascriptCallback;
-import org.pushtalk.android.utils.Logger;
+import com.eva.me.utils.DialogUtil;
+import com.eva.me.utils.JavascriptCallback;
+import com.eva.me.utils.Logger;
 
 import android.app.Activity;
 import android.content.Context;

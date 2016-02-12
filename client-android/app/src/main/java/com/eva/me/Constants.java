@@ -1,4 +1,4 @@
-package org.pushtalk.android;
+package com.eva.me;
 
 public class Constants {
 

@@ -1,13 +1,13 @@
-package org.pushtalk.android.web;
+package com.eva.me.web;
 
 import java.lang.ref.WeakReference;
 
-import org.pushtalk.android.Global;
+import com.eva.me.Global;
 import org.pushtalk.android.R;
-import org.pushtalk.android.activity.WebBaseActivity;
-import org.pushtalk.android.utils.DialogUtil;
-import org.pushtalk.android.utils.Logger;
-import org.pushtalk.android.utils.StringUtils;
+import com.eva.me.activity.WebBaseActivity;
+import com.eva.me.utils.DialogUtil;
+import com.eva.me.utils.Logger;
+import com.eva.me.utils.StringUtils;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -113,11 +113,11 @@ public class TalkWebViewClient extends WebViewClient {
     private void showErrorDialog(final String description) {
     	if (null == mActivity || null == mActivity.get()) return;
 		DialogUtil.createConfirmDialog(mActivity.get(), new OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				mActivity.get().finish();
-			}
-		}, "连接服务器失败", description).show();
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mActivity.get().finish();
+            }
+        }, "连接服务器失败", description).show();
     }
     
     @Override

@@ -1,4 +1,4 @@
-package org.pushtalk.android.utils;
+package com.eva.me.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

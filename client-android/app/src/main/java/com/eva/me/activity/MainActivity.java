@@ -1,4 +1,4 @@
-package org.pushtalk.android.activity;
+package com.eva.me.activity;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -7,17 +7,17 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.pushtalk.android.Config;
-import org.pushtalk.android.Constants;
-import org.pushtalk.android.Global;
+import com.eva.me.Config;
+import com.eva.me.Constants;
+import com.eva.me.Global;
 import org.pushtalk.android.R;
-import org.pushtalk.android.utils.HttpHelper;
-import org.pushtalk.android.utils.Logger;
-import org.pushtalk.android.utils.MyPreferenceManager;
-import org.pushtalk.android.web.TalkWebChromeClient;
-import org.pushtalk.android.web.TalkWebViewCallback;
-import org.pushtalk.android.web.TalkWebViewClient;
-import org.pushtalk.android.web.WebHelper;
+import com.eva.me.utils.HttpHelper;
+import com.eva.me.utils.Logger;
+import com.eva.me.utils.MyPreferenceManager;
+import com.eva.me.web.TalkWebChromeClient;
+import com.eva.me.web.TalkWebViewCallback;
+import com.eva.me.web.TalkWebViewClient;
+import com.eva.me.web.WebHelper;
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -35,6 +35,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
 

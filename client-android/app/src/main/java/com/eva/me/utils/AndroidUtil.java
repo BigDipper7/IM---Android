@@ -1,4 +1,4 @@
-package org.pushtalk.android.utils;
+package com.eva.me.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

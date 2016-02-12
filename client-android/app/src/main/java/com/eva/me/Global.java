@@ -1,13 +1,13 @@
-package org.pushtalk.android;
+package com.eva.me;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Set;
 
-import org.pushtalk.android.utils.Logger;
-import org.pushtalk.android.utils.MyPreferenceManager;
-import org.pushtalk.android.utils.StringUtils;
-import org.pushtalk.android.web.WebHelper;
+import com.eva.me.utils.Logger;
+import com.eva.me.utils.MyPreferenceManager;
+import com.eva.me.utils.StringUtils;
+import com.eva.me.web.WebHelper;
 
 import android.content.Context;
 

@@ -1,12 +1,12 @@
-package org.pushtalk.android.service;
+package com.eva.me.service;
 
 import java.util.zip.Adler32;
 
-import org.pushtalk.android.Config;
-import org.pushtalk.android.Constants;
+import com.eva.me.Config;
+import com.eva.me.Constants;
 import org.pushtalk.android.R;
-import org.pushtalk.android.activity.MainActivity;
-import org.pushtalk.android.utils.StringUtils;
+import com.eva.me.activity.MainActivity;
+import com.eva.me.utils.StringUtils;
 
 import android.app.Notification;
 import android.app.NotificationManager;

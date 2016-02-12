@@ -1,4 +1,4 @@
-package org.pushtalk.android.activity;
+package com.eva.me.activity;
 
 import android.webkit.WebView;
 import cn.jpush.android.api.InstrumentedActivity;
