@@ -1,5 +1,7 @@
 package org.pushtalk.server.utils;
 
+import com.eva.me.server.utils.StringUtils;
+
 public class StringUtilsTests {
 
     /**

@@ -10,10 +10,12 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.pushtalk.server.data.h2.H2Database;
-import org.pushtalk.server.data.h2.TalkServiceImpl;
-import org.pushtalk.server.model.Channel;
-import org.pushtalk.server.model.User;
+
+import com.eva.me.server.data.TalkService;
+import com.eva.me.server.data.h2.H2Database;
+import com.eva.me.server.data.h2.TalkServiceImpl;
+import com.eva.me.server.model.Channel;
+import com.eva.me.server.model.User;
 
 public class ServiceTests {
     

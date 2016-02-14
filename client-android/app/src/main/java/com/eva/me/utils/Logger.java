@@ -3,7 +3,7 @@ package com.eva.me.utils;
 import android.util.Log;
 
 public class Logger {
-	private static final String COMMON_TAG = "Push_Talk";
+	private static final String COMMON_TAG = "IM_eve";
 	
 	public static boolean DEBUG_STATE = true;
 

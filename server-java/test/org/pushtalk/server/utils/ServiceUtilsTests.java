@@ -6,6 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.eva.me.server.utils.ServiceUtils;
+
 public class ServiceUtilsTests {
 
     @Before
