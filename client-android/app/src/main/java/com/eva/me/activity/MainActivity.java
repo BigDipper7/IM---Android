@@ -112,13 +112,13 @@ public class MainActivity extends WebBaseActivity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this, ServerConfActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+				intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 				startActivity(intent);
 			}
 		});
 
 		((LinearLayout) findViewById(R.id.add_leftView)).addView(backButton,lParams);
-		((LinearLayout) findViewById(R.id.add_rightView)).addView(confButton,lParams);
+		((LinearLayout) findViewById(R.id.add_rightView)).addView(confButton, lParams);
 
 		CookieSyncManager.createInstance(this);
 		CookieSyncManager.getInstance().startSync();
@@ -310,8 +310,8 @@ public class MainActivity extends WebBaseActivity {
 			@Override
 			public void gotResult(int code, String alias, Set<String> tags) {
 				Log.d(TAG, "[TagAliasCallback], code: " + code);
-				Log.d(TAG, "[TagAliasCallback], code: " + alias);
-				Log.d(TAG, "[TagAliasCallback], code: " + tags);
+				Log.d(TAG, "[TagAliasCallback], alias: " + alias);
+				Log.d(TAG, "[TagAliasCallback], tags: " + tags);
 			}
 		});
 	}

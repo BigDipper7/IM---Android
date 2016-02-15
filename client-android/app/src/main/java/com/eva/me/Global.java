@@ -19,8 +19,16 @@ public class Global {
         Config.SERVER = getCurrentServer();
         Logger.i(TAG, "Current pushtalk server: " + Config.SERVER);
     }
-    
-    
+
+    /**
+     * get current server addr,
+     *
+     * 1.get from preferences, last access server addr
+     * 2.get from default server addr list and if accessable and save it to preferences
+     *
+     *
+     * @return String currentServerAddr
+     */
     public static String getCurrentServer() {
         String server = MyPreferenceManager.getString(Constants.PREF_CURRENT_SERVER, null);
         if (null != server) return server;
