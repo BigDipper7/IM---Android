@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/header_selector" >
 
-    <io.jchat.android.view.UnderlineTextView
+    <com.eva.me.view.UnderlineTextView
         android:id="@+id/section_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

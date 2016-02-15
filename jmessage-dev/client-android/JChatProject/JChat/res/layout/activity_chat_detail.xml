@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.jchat.android.view.ChatDetailView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.eva.me.view.ChatDetailView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/chat_detail_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,7 +20,7 @@
         
         <include layout="@layout/menu_title_bar"/>
 
-        <io.jchat.android.view.GroupGridView
+        <com.eva.me.view.GroupGridView
             android:id="@+id/chat_detail_group_gv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             android:numColumns="4"
             android:stretchMode="columnWidth"
             android:verticalSpacing="10dp">
-        </io.jchat.android.view.GroupGridView>
+        </com.eva.me.view.GroupGridView>
 
 
     <View
@@ -166,4 +166,4 @@
     </LinearLayout>
     </LinearLayout>
     </ScrollView>
-</io.jchat.android.view.ChatDetailView>
+</com.eva.me.view.ChatDetailView>

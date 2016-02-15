@@ -24,14 +24,14 @@
             android:background="@drawable/pictures_select_icon"
             android:button="@null" />
 
-        <io.jchat.android.view.CircleImageView
+        <com.eva.me.view.CircleImageView
             android:id="@+id/avatar_iv"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginLeft="15dp"
             android:src="@drawable/head_icon">
 
-        </io.jchat.android.view.CircleImageView>
+        </com.eva.me.view.CircleImageView>
 
         <TextView
             android:id="@+id/display_name_tv"

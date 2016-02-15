@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.jchat.android.view.GroupSettingView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.eva.me.view.GroupSettingView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/group_setting_view"
     android:layout_width="260dp"
     android:layout_height="wrap_content"
@@ -72,4 +72,4 @@
         android:text="这个昵称只会在本群里显示"
         android:visibility="gone" />
 
-</io.jchat.android.view.GroupSettingView>
+</com.eva.me.view.GroupSettingView>

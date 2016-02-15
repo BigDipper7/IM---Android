@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.jchat.android.view.SelectFriendView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.eva.me.view.SelectFriendView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/select_friend_view"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -75,12 +75,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <io.jchat.android.view.StickyListHeadersListView
+        <com.eva.me.view.StickyListHeadersListView
             android:id="@+id/sticky_list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </io.jchat.android.view.StickyListHeadersListView>
+        </com.eva.me.view.StickyListHeadersListView>
 
         <TextView
             android:id="@+id/letter_hint_tv"
@@ -93,7 +93,7 @@
             android:textSize="30dp"
             android:visibility="invisible" />
 
-        <io.jchat.android.view.SideBar
+        <com.eva.me.view.SideBar
             android:id="@+id/sidebar"
             android:layout_width="30dp"
             android:layout_height="match_parent"
@@ -102,4 +102,4 @@
 
     </FrameLayout>
 
-</io.jchat.android.view.SelectFriendView>
+</com.eva.me.view.SelectFriendView>

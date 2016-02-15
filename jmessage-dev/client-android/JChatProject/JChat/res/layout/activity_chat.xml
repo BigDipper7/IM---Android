@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.jchat.android.view.ChatView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.eva.me.view.ChatView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:listViewAttr="http://schemas.android.com/apk/res-auto"
     android:id="@+id/chat_view"
     android:layout_width="match_parent"
@@ -69,7 +69,7 @@
             android:descendantFocusability="beforeDescendants"
             android:focusableInTouchMode="true">
 
-            <io.jchat.android.view.DropDownListView
+            <com.eva.me.view.DropDownListView
                 android:id="@+id/chat_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -80,7 +80,7 @@
                 listViewAttr:isDropDownStyle="true"
                 listViewAttr:isOnBottomStyle="false"
                 listViewAttr:isAutoLoadOnBottom="false">
-            </io.jchat.android.view.DropDownListView>
+            </com.eva.me.view.DropDownListView>
         </LinearLayout>
 
 
@@ -141,7 +141,7 @@
                         android:background="@drawable/expression1"
                         android:visibility="gone"/>
 
-                    <io.jchat.android.controller.RecordVoiceBtnController
+                    <com.eva.me.controller.RecordVoiceBtnController
                         android:id="@+id/voice_btn"
                         android:layout_width="match_parent"
                         android:layout_height="34dp"
@@ -338,4 +338,4 @@
         </LinearLayout>
         </RelativeLayout>
 
-</io.jchat.android.view.ChatView>
+</com.eva.me.view.ChatView>

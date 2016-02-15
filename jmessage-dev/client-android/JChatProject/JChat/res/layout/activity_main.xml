@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.jchat.android.view.MainView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.eva.me.view.MainView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -67,7 +67,7 @@
 
     </LinearLayout>
 
-    <io.jchat.android.view.ScrollControllViewPager
+    <com.eva.me.view.ScrollControllViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -75,6 +75,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true">
 
-    </io.jchat.android.view.ScrollControllViewPager>
+    </com.eva.me.view.ScrollControllViewPager>
 
-</io.jchat.android.view.MainView>
+</com.eva.me.view.MainView>

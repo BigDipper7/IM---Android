@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical">
 
-            <io.jchat.android.view.CircleImageView
+            <com.eva.me.view.CircleImageView
                 android:id="@+id/msg_item_head_icon"
                 android:layout_width="@dimen/item_head_icon_size"
                 android:layout_height="@dimen/item_head_icon_size"

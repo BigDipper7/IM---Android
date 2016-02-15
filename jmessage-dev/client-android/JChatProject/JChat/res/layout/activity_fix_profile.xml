@@ -50,7 +50,7 @@
             android:layout_toLeftOf="@+id/avatar_iv"
             android:background="#c1d2ec" />
 
-        <io.jchat.android.view.CircleImageView
+        <com.eva.me.view.CircleImageView
             android:id="@+id/avatar_iv"
             android:layout_width="70dp"
             android:layout_height="70dp"

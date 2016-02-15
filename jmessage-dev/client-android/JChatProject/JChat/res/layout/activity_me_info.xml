@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.jchat.android.view.MeInfoView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.eva.me.view.MeInfoView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/me_info_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -144,4 +144,4 @@
         </LinearLayout>
     </ScrollView>
 
-</io.jchat.android.view.MeInfoView>
+</com.eva.me.view.MeInfoView>

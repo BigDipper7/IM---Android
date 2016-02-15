@@ -27,7 +27,7 @@
                 android:textSize="16sp" 
                 android:textColor="@color/black"/>
             
-            <io.jchat.android.view.SlipButton
+            <com.eva.me.view.SlipButton
                 android:id="@+id/notification_switch"
                 android:layout_width="70dp"
                 android:layout_height="30dp"
@@ -57,7 +57,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/black"/>
 
-            <io.jchat.android.view.SlipButton
+            <com.eva.me.view.SlipButton
                 android:id="@+id/sound_switch"
                 android:layout_width="70dp"
                 android:layout_height="30dp"
@@ -88,7 +88,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/black"/>
 
-            <io.jchat.android.view.SlipButton
+            <com.eva.me.view.SlipButton
                 android:id="@+id/vibrate_switch"
                 android:layout_width="70dp"
                 android:layout_height="30dp"

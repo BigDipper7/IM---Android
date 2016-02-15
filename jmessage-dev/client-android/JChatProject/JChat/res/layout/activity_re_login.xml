@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.jchat.android.view.ReloginView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.eva.me.view.ReloginView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/relogin_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -36,7 +36,7 @@
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <io.jchat.android.view.CircleImageView
+                <com.eva.me.view.CircleImageView
                     android:id="@+id/relogin_head_icon"
                     android:layout_width="@dimen/login_regist_head_icon_size"
                     android:layout_height="@dimen/login_regist_head_icon_size"
@@ -149,4 +149,4 @@
 
     </ScrollView>
 
-</io.jchat.android.view.ReloginView>
+</com.eva.me.view.ReloginView>
