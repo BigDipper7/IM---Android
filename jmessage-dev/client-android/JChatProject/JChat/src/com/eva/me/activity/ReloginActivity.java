@@ -21,6 +21,14 @@ public class ReloginActivity extends BaseActivity {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_re_login);
+
+        init();
+    }
+
+    /**
+     * init method in onCreate
+     */
+    private void init() {
         mReloginView = (ReloginView) findViewById(R.id.relogin_view);
         mReloginView.initModule();
         fillContent();
@@ -28,15 +36,23 @@ public class ReloginActivity extends BaseActivity {
         mReloginView.setListener(mReloginController);
     }
 
+    /**
+     * update current activity content, add username and add avatar
+     */
     private void fillContent() {
+        //get userName and get user avatar from preferences
         String userName = SharePreferenceManager.getCachedUsername();
         String userAvatarPath = SharePreferenceManager.getCachedAvatarPath();
+
+        //set
         Bitmap bitmap = BitmapLoader.getBitmapFromFile(userAvatarPath, mAvatarSize, mAvatarSize);
         if (bitmap != null) {
             mReloginView.showAvatar(bitmap);
         }
         mReloginView.setUserName(userName);
         mReloginController = new ReloginController(mReloginView, this, userName);
+
+        //update
         SharePreferenceManager.setCachedUsername(userName);
         SharePreferenceManager.setCachedAvatarPath(userAvatarPath);
     }

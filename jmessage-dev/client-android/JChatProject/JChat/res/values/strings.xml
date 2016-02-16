@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">极光IM</string>
+    <string name="app_name">IM EVE</string>
     <string name="username_hit">用户名</string>
     <string name="password_hit">用户密码</string>
+
     <!-- ReLogin/login/register界面中使用到的字符串 -->
     <string name="change_user_btn">切换账号</string>
     <string name="register">注册</string>
