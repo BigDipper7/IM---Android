@@ -16,6 +16,12 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        init();
+
+    }
+
+    private void init() {
         mLoginView = (LoginView) findViewById(R.id.login_view);
         mLoginView.initModule();
         mLoginController = new LoginController(mLoginView, this);

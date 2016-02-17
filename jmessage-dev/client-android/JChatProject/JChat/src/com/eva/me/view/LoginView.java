@@ -33,6 +33,10 @@ public class LoginView extends LinearLayout {
 		super(context, attrs);
 		this.mContext = context;
 	}
+
+	/**
+	 * init all needed widget, can be use in the following business logic
+	 */
 	public void initModule() {
 		mReturnBtn = (ImageButton) findViewById(R.id.return_btn);
 		mUserId = (EditText) findViewById(R.id.username);
