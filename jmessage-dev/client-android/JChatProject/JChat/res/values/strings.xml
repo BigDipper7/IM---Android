@@ -11,7 +11,7 @@
     <string name="registering_hint">注册中</string>
     <string name="register_failed_toast">注册失败</string>
     <string name="login">登录</string>
-    <string name="login_hint">登录中</string>
+    <string name="login_hint">登录中&#8230;</string>
     <string name="user_not_exist_toast">该用户不存在</string>
     <string name="user_already_exist_toast">该用户已存在</string>
     <string name="user_add_self_toast">不能添加自己为好友</string>

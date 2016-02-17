@@ -44,6 +44,7 @@ public class ReloginController implements ReloginView.Listener, OnClickListener 
                                 InputMethodManager.HIDE_NOT_ALWAYS);
                     }
                 }
+
                 final String password = mReloginView.getPassword();
 
                 if (password.equals("")) {
