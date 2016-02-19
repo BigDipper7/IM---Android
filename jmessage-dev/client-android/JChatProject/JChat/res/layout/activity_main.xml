@@ -68,11 +68,11 @@
 
     </LinearLayout>
 
-    <FrameLayout
+    <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/main_view_split_line_color"
-        android:layout_alignTop="@id/actionbar_layout_tmp"></FrameLayout>
+        android:layout_alignTop="@id/actionbar_layout_tmp" />
 
     <com.eva.me.view.ScrollControllViewPager
         android:id="@+id/viewpager"
