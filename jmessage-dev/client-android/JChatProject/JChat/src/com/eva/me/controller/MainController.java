@@ -44,6 +44,9 @@ public class MainController implements OnClickListener, OnPageChangeListener {
         setViewPager();
     }
 
+    /**
+     * init viewpager, init viewpager instance and init adapter
+     */
     private void setViewPager() {
         List<Fragment> fragments = new ArrayList<Fragment>();
         // init Fragment
