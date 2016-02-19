@@ -19,6 +19,7 @@
     <!-- 主页面 -->
     <color name="action_bar_txt_color">#969696</color>
     <color name="actionbar_sel_color">#1c1c1c</color>
+    <color name="action_bar_tab_bg_color">#ffffff</color>
     <color name="me_info_edit_color">#2d2d2d</color>
     <color name="me_info_hint_color">#cfcdce</color>
     <color name="actionbar_pres_color">#3f80dc</color>

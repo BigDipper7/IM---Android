@@ -34,7 +34,7 @@
         <item name="android:paddingTop">7dp</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:textColor">@color/action_bar_txt_color</item>
-        <item name="android:background">#3C3C3C</item>
+        <item name="android:background">@color/action_bar_tab_bg_color</item>
         <item name="android:textSize">@dimen/text_minimum_size</item>
         <item name="android:textStyle">normal</item>
     </style>

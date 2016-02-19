@@ -7,13 +7,14 @@
     android:orientation="vertical">
 
 
+
     <LinearLayout
         android:id="@+id/actionbar_layout_tmp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:background="#3C3C3C">
+        android:background="@color/action_bar_tab_bg_color">
 
         <FrameLayout
             android:layout_width="0dp"
@@ -66,6 +67,12 @@
         </FrameLayout>
 
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/main_view_split_line_color"
+        android:layout_alignTop="@id/actionbar_layout_tmp"></FrameLayout>
 
     <com.eva.me.view.ScrollControllViewPager
         android:id="@+id/viewpager"
