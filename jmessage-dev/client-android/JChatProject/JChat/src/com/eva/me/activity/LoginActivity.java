@@ -5,15 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.eva.me.R;
 import com.eva.me.controller.LoginController;
+import com.eva.me.tools.Logger;
 import com.eva.me.view.LoginView;
 
 public class LoginActivity extends BaseActivity {
-
+    private static final String TAG = "LoginActivity";
     private LoginView mLoginView = null;
     private LoginController mLoginController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Logger.v(TAG, "OnCreate() at:" + this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -34,22 +36,25 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void onPause() {
+        Logger.v(TAG, "onPause() at:" + this);
         super.onPause();
     }
 
     @Override
     protected void onResume() {
+        Logger.v(TAG, "onPause() at:" + this);
         super.onResume();
     }
 
     @Override
     protected void onStop() {
-        // TODO Auto-generated method stub
+        Logger.v(TAG, "onStop() at:" + this);
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
+        Logger.v(TAG, "onDestroy() at:" + this);
         super.onDestroy();
     }
 

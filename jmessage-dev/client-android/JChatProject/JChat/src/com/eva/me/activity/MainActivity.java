@@ -19,16 +19,19 @@ import com.eva.me.R;
 import com.eva.me.application.JChatDemoApplication;
 import com.eva.me.controller.MainController;
 import com.eva.me.tools.FileHelper;
+import com.eva.me.tools.Logger;
 import com.eva.me.tools.SharePreferenceManager;
 import com.eva.me.view.MainView;
 
 public class MainActivity extends FragmentActivity {
+    private static final String TAG = "MainActivity";
     private MainController mMainController;
     private MainView mMainView;
     private Uri mUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Logger.v(TAG, "OnCreate() at:"+this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mMainView = (MainView) findViewById(R.id.main_view);
@@ -47,15 +50,21 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onPause() {
+        Logger.v(TAG, "OnPause() at:"+this);
         JPushInterface.onPause(this);
         super.onPause();
     }
 
     @Override
     protected void onResume() {
+        Logger.v(TAG, "OnResume() at:"+this);
+
         JPushInterface.onResume(this);
         //第一次登录需要设置昵称
         boolean flag = SharePreferenceManager.getCachedFixProfileFlag();
+        Logger.v(TAG, "OnResume() flag:"+flag);
+        Logger.v(TAG, "OnResume() JMessageClient.getMyInfo():"+JMessageClient.getMyInfo());
+
         if (JMessageClient.getMyInfo() == null) {
             Intent intent = new Intent();
             if (null != SharePreferenceManager.getCachedUsername()) {
@@ -65,11 +74,17 @@ public class MainActivity extends FragmentActivity {
             } else {
                 intent.setClass(this, LoginActivity.class);
             }
+
+            Logger.v(TAG, "OnResume() intent:"+intent);
+
             startActivity(intent);
             finish();
         } else if (TextUtils.isEmpty(JMessageClient.getMyInfo().getNickname()) && flag) {
             Intent intent = new Intent();
             intent.setClass(this, FixProfileActivity.class);
+
+            Logger.v(TAG, "OnResume() intent:" + intent);
+
             startActivity(intent);
             finish();
         }
@@ -80,6 +95,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Logger.v(TAG, "OnDestory() at:" + this);
     }
 
     public FragmentManager getSupportFragmentManger() {
@@ -89,6 +105,7 @@ public class MainActivity extends FragmentActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Logger.v(TAG, "onActivityResult() at:" + this);
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_CANCELED) {
             return;
