@@ -10,6 +10,7 @@ import cn.jpush.im.android.api.event.NotificationClickEvent;
 import cn.jpush.im.android.api.model.Conversation;
 import cn.jpush.im.android.api.model.Message;
 import com.eva.me.activity.ChatActivity;
+import com.eva.me.tools.Logger;
 
 public class NotificationClickEventReceiver {
     private static final String TAG = NotificationClickEventReceiver.class.getSimpleName();
@@ -22,9 +23,9 @@ public class NotificationClickEventReceiver {
     }
 
     public void onEvent(NotificationClickEvent notificationClickEvent) {
-        Log.d(TAG, "[onEvent] NotificationClickEvent !!!!");
+        Logger.d(TAG, "[onEvent] NotificationClickEvent !!!!");
         if (null == notificationClickEvent) {
-            Log.w(TAG, "[onNotificationClick] message is null");
+            Logger.w(TAG, "[onNotificationClick] message is null");
             return;
         }
         Message msg = notificationClickEvent.getMessage();
@@ -36,7 +37,7 @@ public class NotificationClickEventReceiver {
                 conv = JMessageClient.getSingleConversation(targetID);
             }else conv = JMessageClient.getGroupConversation(Long.parseLong(targetID));
             conv.resetUnreadCount();
-            Log.d("Notification", "Conversation unread msg reset");
+            Logger.d("Notification", "Conversation unread msg reset");
             Intent notificationIntent = new Intent(mContext, ChatActivity.class);
 //        notificationIntent.setAction(Intent.ACTION_MAIN);
             notificationIntent.putExtra("targetID", targetID);

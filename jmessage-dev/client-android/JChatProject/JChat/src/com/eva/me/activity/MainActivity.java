@@ -35,7 +35,7 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mMainView = (MainView) findViewById(R.id.main_view);
-        mMainView.initModule();
+        mMainView.initModule();//init MainView and it child views instance
         mMainController = new MainController(mMainView, this);//in this step, it will set the viewpager
 
         mMainView.setOnClickListener(mMainController);

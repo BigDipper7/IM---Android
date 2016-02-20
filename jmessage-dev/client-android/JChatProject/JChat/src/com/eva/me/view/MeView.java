@@ -17,8 +17,10 @@ import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.model.UserInfo;
 import com.eva.me.R;
 import com.eva.me.tools.BitmapLoader;
+import com.eva.me.tools.Logger;
 
 public class MeView extends LinearLayout {
+    private static final String TAG = MeView.class.getSimpleName();
 
     private TextView mTitleBarTitle;
     private ImageView mAvatarIv;
@@ -55,9 +57,12 @@ public class MeView extends LinearLayout {
         mHeight = (int) (190 * density);
         if (userInfo != null) {
             mUserNameTv.setText(userInfo.getUserName());
+            Logger.i(TAG, String.format("[MeView]: nickname [%s]", userInfo.getNickname()));
             if (!TextUtils.isEmpty(userInfo.getNickname())) {
                 mNickNameTv.setText(userInfo.getNickname());
+                Logger.i(TAG, "is false");
             } else {
+                Logger.i(TAG, "is true");
                 mNickNameTv.setText(userInfo.getUserName());
             }
         }
