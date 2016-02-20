@@ -60,9 +60,9 @@ public class MeView extends LinearLayout {
             Logger.i(TAG, String.format("[MeView]: nickname [%s]", userInfo.getNickname()));
             if (!TextUtils.isEmpty(userInfo.getNickname())) {
                 mNickNameTv.setText(userInfo.getNickname());
-                Logger.i(TAG, "is false");
+//                Logger.i(TAG, "is false");
             } else {
-                Logger.i(TAG, "is true");
+//                Logger.i(TAG, "is true");
                 mNickNameTv.setText(userInfo.getUserName());
             }
         }

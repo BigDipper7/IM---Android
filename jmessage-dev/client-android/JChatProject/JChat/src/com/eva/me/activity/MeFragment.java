@@ -84,7 +84,10 @@ public class MeFragment extends BaseFragment {
                     }
                 });
             }
-            mMeView.showNickName(myInfo.getNickname());
+            String mTempNickName = myInfo.getNickname();
+//            mMeView.showNickName(myInfo.getNickname());
+            mMeView.showNickName(TextUtils.isEmpty(mTempNickName)?myInfo.getUserName():mTempNickName);
+
         }
         super.onResume();
     }
