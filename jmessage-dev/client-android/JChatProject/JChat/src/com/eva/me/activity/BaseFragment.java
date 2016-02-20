@@ -19,6 +19,7 @@ import cn.jpush.im.android.api.model.UserInfo;
 import com.eva.me.R;
 import com.eva.me.tools.DialogCreator;
 import com.eva.me.tools.FileHelper;
+import com.eva.me.tools.Logger;
 import com.eva.me.tools.SharePreferenceManager;
 
 /**
@@ -70,7 +71,7 @@ public class BaseFragment extends Fragment {
                 } else {
                     path = FileHelper.getUserAvatarPath(myInfo.getUserName());
                 }
-                Log.i(TAG, "userName " + myInfo.getUserName());
+                Logger.i(TAG, "userName " + myInfo.getUserName());
                 SharePreferenceManager.setCachedUsername(myInfo.getUserName());
                 SharePreferenceManager.setCachedAvatarPath(path);
                 JMessageClient.logout();
@@ -79,7 +80,7 @@ public class BaseFragment extends Fragment {
                 startActivity(intent);
                 BaseFragment.this.getActivity().finish();
             } else {
-                Log.d(TAG, "user info is null!");
+                Logger.e(TAG, "[Critical] user info is null!");
             }
         }
     };
