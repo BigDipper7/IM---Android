@@ -36,7 +36,7 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         mMainView = (MainView) findViewById(R.id.main_view);
         mMainView.initModule();
-        mMainController = new MainController(mMainView, this);
+        mMainController = new MainController(mMainView, this);//in this step, it will set the viewpager
 
         mMainView.setOnClickListener(mMainController);
         mMainView.setOnPageChangeListener(mMainController);

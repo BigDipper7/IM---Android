@@ -49,13 +49,15 @@ public class MainController implements OnClickListener, OnPageChangeListener {
      */
     private void setViewPager() {
         List<Fragment> fragments = new ArrayList<Fragment>();
-        // init Fragment
+
+        // init each separate Fragment, just instantiate fragment instances
         mConvListFragment = new ConversationListFragment();
         ContactsFragment contactsActivity = new ContactsFragment();
         mMeActivity = new MeFragment();
         fragments.add(mConvListFragment);
         fragments.add(contactsActivity);
         fragments.add(mMeActivity);
+
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(mContext.getSupportFragmentManger(),
                 fragments);
         mMainView.setViewPagerAdapter(viewPagerAdapter);

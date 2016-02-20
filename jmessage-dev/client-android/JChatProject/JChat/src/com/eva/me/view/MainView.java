@@ -18,8 +18,8 @@ public class MainView extends RelativeLayout {
     private Button[] mBtnList;
     private int[] mBtnListID;
     List<Fragment> fragments;
-    private ImageView mMsgUnreadiv;
-    private ScrollControllViewPager mViewContainer;
+    private ImageView mMsgUnreadIV;
+    private ScrollControllViewPager mViewContainerSVP;
 
     public MainView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -33,8 +33,8 @@ public class MainView extends RelativeLayout {
         for (int i = 0; i < 3; i++) {
             mBtnList[i] = (Button) findViewById(mBtnListID[i]);
         }
-        mMsgUnreadiv = (ImageView) findViewById(R.id.msg_unread_iv);
-        mViewContainer = (ScrollControllViewPager) findViewById(R.id.viewpager);
+        mMsgUnreadIV = (ImageView) findViewById(R.id.msg_unread_iv);
+        mViewContainerSVP = (ScrollControllViewPager) findViewById(R.id.viewpager);
         mBtnList[0].setTextColor(getResources().getColor(R.color.actionbar_pres_color));
         mBtnList[0].setSelected(true);
     }
@@ -46,15 +46,15 @@ public class MainView extends RelativeLayout {
     }
 
     public void setOnPageChangeListener(OnPageChangeListener onPageChangeListener) {
-        mViewContainer.setOnPageChangeListener(onPageChangeListener);
+        mViewContainerSVP.setOnPageChangeListener(onPageChangeListener);
     }
 
     public void setViewPagerAdapter(FragmentPagerAdapter adapter) {
-        mViewContainer.setAdapter(adapter);
+        mViewContainerSVP.setAdapter(adapter);
     }
 
     public void setCurrentItem(int index) {
-        mViewContainer.setCurrentItem(index);
+        mViewContainerSVP.setCurrentItem(index);
     }
 
     public void setButtonColor(int index) {
@@ -71,10 +71,10 @@ public class MainView extends RelativeLayout {
 
 
     public void dismissUnreadFlag() {
-        mMsgUnreadiv.setVisibility(View.INVISIBLE);
+        mMsgUnreadIV.setVisibility(View.INVISIBLE);
     }
 
     public void showNewMsgReceivedFlag() {
-        mMsgUnreadiv.setVisibility(View.VISIBLE);
+        mMsgUnreadIV.setVisibility(View.VISIBLE);
     }
 }
