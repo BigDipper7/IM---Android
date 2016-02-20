@@ -7,11 +7,12 @@ import android.os.Bundle;
 import com.eva.me.R;
 import com.eva.me.controller.ReloginController;
 import com.eva.me.tools.BitmapLoader;
+import com.eva.me.tools.Logger;
 import com.eva.me.tools.SharePreferenceManager;
 import com.eva.me.view.ReloginView;
 
 public class ReloginActivity extends BaseActivity {
-
+    private static final String TAG = "ReloginActivity";
     private ReloginView mReloginView;
     private ReloginController mReloginController;
 
@@ -19,6 +20,7 @@ public class ReloginActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
+        Logger.v(TAG, "OnCreate() at:" + this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_re_login);
 
@@ -84,6 +86,7 @@ public class ReloginActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
+        Logger.v(TAG, "onDestroy() at:" + this);
         super.onDestroy();
     }
 }
