@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import com.eva.me.R;
 import com.eva.me.activity.MeFragment;
 import com.eva.me.tools.DialogCreator;
+import com.eva.me.tools.Logger;
 import com.eva.me.tools.NativeImageLoader;
 import com.eva.me.view.MeView;
 
@@ -28,7 +29,7 @@ public class MeController implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.my_avatar_iv:
-                Log.i("MeController", "avatar onClick");
+                Logger.i("MeController", "avatar onClick");
                 mContext.startBrowserAvatar();
                 break;
             case R.id.take_photo_iv:
