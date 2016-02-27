@@ -147,7 +147,7 @@ public class MeInfoActivity extends BaseActivity {
         };
         manRl.setOnClickListener(listener);
         womanRl.setOnClickListener(listener);
-        un
+        unknownRl.setOnClickListener(listener);
     }
 
     public void startSelectAreaActivity() {

@@ -144,7 +144,7 @@
                     android:id="@+id/gender_iv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/sex_man" />
+                    android:src="@drawable/sex_unknown" />
 
                 <TextView
                     style="@style/info_left_txt_style"

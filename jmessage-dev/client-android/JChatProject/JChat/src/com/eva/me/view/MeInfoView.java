@@ -89,7 +89,7 @@ public class MeInfoView extends LinearLayout {
                 break;
             case unknown:
                 mGenderTv.setText(mContext.getString(R.string.unknown));
-                mGenderIv.setImageResource(R.drawable.sex_man);
+                mGenderIv.setImageResource(R.drawable.sex_unknown);
                 break;
             default:
                 Logger.e(TAG, "[Gender] unknown input");
@@ -143,7 +143,7 @@ public class MeInfoView extends LinearLayout {
                 mGenderIv.setImageResource(R.drawable.sex_woman);
             } else {
                 mGenderTv.setText(mContext.getString(R.string.unknown));
-                mGenderIv.setImageResource(R.drawable.sex_man);
+                mGenderIv.setImageResource(R.drawable.sex_unknown);
             }
             if (!TextUtils.isEmpty(userInfo.getRegion()))
                 mRegionTv.setText(userInfo.getRegion());
