@@ -54,20 +54,29 @@ public class MeInfoActivity extends BaseActivity {
         builder.setView(view);
         final Dialog dialog = builder.create();
         dialog.show();
+
         RelativeLayout manRl = (RelativeLayout) view.findViewById(R.id.man_rl);
         RelativeLayout womanRl = (RelativeLayout) view.findViewById(R.id.woman_rl);
+        RelativeLayout unknownRl = (RelativeLayout) view.findViewById(R.id.unknown_rl);
         ImageView manSelectedIv = (ImageView) view.findViewById(R.id.man_selected_iv);
         ImageView womanSelectedIv = (ImageView) view.findViewById(R.id.woman_selected_iv);
+        ImageView unknownSelectedIv = (ImageView) view.findViewById(R.id.unknown_selected_iv);
+
+        //refresh state
         if (gender == UserInfo.Gender.male) {
             manSelectedIv.setVisibility(View.VISIBLE);
             womanSelectedIv.setVisibility(View.GONE);
+            unknownSelectedIv.setVisibility(View.GONE);
         } else if (gender == UserInfo.Gender.female) {
             manSelectedIv.setVisibility(View.GONE);
             womanSelectedIv.setVisibility(View.VISIBLE);
+            unknownSelectedIv.setVisibility(View.GONE);
         } else {
             manSelectedIv.setVisibility(View.GONE);
             womanSelectedIv.setVisibility(View.GONE);
+            unknownSelectedIv.setVisibility(View.VISIBLE);
         }
+
         View.OnClickListener listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +89,7 @@ public class MeInfoActivity extends BaseActivity {
                                 @Override
                                 public void gotResult(final int status, final String desc) {
                                     if (status == 0) {
-                                        mMeInfoView.setGender(true);
+                                        mMeInfoView.setGender(UserInfo.Gender.male);
                                         Toast.makeText(MeInfoActivity.this,
                                                 MeInfoActivity.this.getString(R.string.modify_success_toast),
                                                 Toast.LENGTH_SHORT).show();
@@ -100,7 +109,7 @@ public class MeInfoActivity extends BaseActivity {
                                 @Override
                                 public void gotResult(final int status, final String desc) {
                                     if (status == 0) {
-                                        mMeInfoView.setGender(false);
+                                        mMeInfoView.setGender(UserInfo.Gender.female);
                                         Toast.makeText(MeInfoActivity.this,
                                                 MeInfoActivity.this.getString(R.string.modify_success_toast),
                                                 Toast.LENGTH_SHORT).show();
@@ -112,11 +121,33 @@ public class MeInfoActivity extends BaseActivity {
                         }
                         dialog.cancel();
                         break;
+                    case R.id.unknown_rl:
+                        if (gender != UserInfo.Gender.unknown) {
+                            UserInfo myUserInfo = JMessageClient.getMyInfo();
+                            myUserInfo.setGender(UserInfo.Gender.unknown);
+                            JMessageClient.updateMyInfo(UserInfo.Field.gender, myUserInfo, new BasicCallback() {
+                                @Override
+                                public void gotResult(final int status, final String desc) {
+                                    if (status == 0) {
+                                        mMeInfoView.setGender(UserInfo.Gender.unknown);
+                                        Toast.makeText(MeInfoActivity.this,
+                                                MeInfoActivity.this.getString(R.string.modify_success_toast),
+                                                Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        HandleResponseCode.onHandle(MeInfoActivity.this, status, false);
+                                    }
+                                }
+                            });
+                        }
+                        dialog.cancel();
+
+                        break;
                 }
             }
         };
         manRl.setOnClickListener(listener);
         womanRl.setOnClickListener(listener);
+        un
     }
 
     public void startSelectAreaActivity() {

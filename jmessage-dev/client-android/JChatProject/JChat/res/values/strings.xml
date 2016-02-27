@@ -160,7 +160,7 @@
     <string name="save">保存</string>
     <string name="man">男</string>
     <string name="woman">女</string>
-    <string name="unknown">未知</string>
+    <string name="unknown">保密</string>
     <string name="change_password">修改密码</string>
     <string name="change_pwd_tip">修改密码前请输入原密码</string>
     <string name="input_password_error_toast">输入密码错误，请重新输入</string>

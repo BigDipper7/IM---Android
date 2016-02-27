@@ -19,9 +19,11 @@ import com.eva.me.R;
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.model.UserInfo;
 import com.eva.me.tools.DialogCreator;
+import com.eva.me.tools.Logger;
 
 
 public class MeInfoView extends LinearLayout {
+    private static final String TAG = MeInfoView.class.getSimpleName();
 
     // private LinearLayout mTitleBarContainer;
 
@@ -75,13 +77,23 @@ public class MeInfoView extends LinearLayout {
         mNicknameTv.setText(nickName);
     }
 
-    public void setGender(boolean isMan) {
-        if (isMan) {
-            mGenderTv.setText(mContext.getString(R.string.man));
-            mGenderIv.setImageResource(R.drawable.sex_man);
-        } else {
-            mGenderTv.setText(mContext.getString(R.string.woman));
-            mGenderIv.setImageResource(R.drawable.sex_woman);
+    public void setGender(UserInfo.Gender gender) {
+        switch (gender){
+            case male:
+                mGenderTv.setText(mContext.getString(R.string.man));
+                mGenderIv.setImageResource(R.drawable.sex_man);
+                break;
+            case female:
+                mGenderTv.setText(mContext.getString(R.string.woman));
+                mGenderIv.setImageResource(R.drawable.sex_woman);
+                break;
+            case unknown:
+                mGenderTv.setText(mContext.getString(R.string.unknown));
+                mGenderIv.setImageResource(R.drawable.sex_man);
+                break;
+            default:
+                Logger.e(TAG, "[Gender] unknown input");
+                break;
         }
     }
 
@@ -131,6 +143,7 @@ public class MeInfoView extends LinearLayout {
                 mGenderIv.setImageResource(R.drawable.sex_woman);
             } else {
                 mGenderTv.setText(mContext.getString(R.string.unknown));
+                mGenderIv.setImageResource(R.drawable.sex_man);
             }
             if (!TextUtils.isEmpty(userInfo.getRegion()))
                 mRegionTv.setText(userInfo.getRegion());

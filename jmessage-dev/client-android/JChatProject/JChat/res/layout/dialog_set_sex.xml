@@ -20,6 +20,37 @@
         android:layout_height="1dp"
         android:background="@color/me_split_line_color" />
 
+    <RelativeLayout
+        android:id="@+id/unknown_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:background="@drawable/list_item_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:text="@string/unknown"
+            android:textColor="@color/chat_detail_item_content_color"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:id="@+id/unknown_selected_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/selected"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/me_split_line_color" />
 
     <RelativeLayout
         android:id="@+id/man_rl"
@@ -44,6 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="10dp"
+            android:visibility="gone"
             android:background="@drawable/selected"/>
 
     </RelativeLayout>
