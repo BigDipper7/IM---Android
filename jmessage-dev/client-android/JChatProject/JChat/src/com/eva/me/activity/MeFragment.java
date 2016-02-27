@@ -27,6 +27,7 @@ import com.eva.me.tools.BitmapLoader;
 import com.eva.me.tools.DialogCreator;
 import com.eva.me.tools.FileHelper;
 import com.eva.me.tools.HandleResponseCode;
+import com.eva.me.tools.Logger;
 import com.eva.me.tools.SharePreferenceManager;
 import com.eva.me.view.MeView;
 
@@ -69,7 +70,7 @@ public class MeFragment extends BaseFragment {
 
     @Override
     public void onResume() {
-        if (!mIsShowAvatar) {
+        if (!mIsShowAvatar) {//not shown avatar, must init and show avatar pic
             UserInfo myInfo = JMessageClient.getMyInfo();
             if (!TextUtils.isEmpty(myInfo.getAvatar())) {
                 myInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
@@ -84,6 +85,8 @@ public class MeFragment extends BaseFragment {
                     }
                 });
             }
+
+            //if no user nickname, must use UserID to replace the user nickname. all this happens the first time.
             String mTempNickName = myInfo.getNickname();
 //            mMeView.showNickName(myInfo.getNickname());
             mMeView.showNickName(TextUtils.isEmpty(mTempNickName)?myInfo.getUserName():mTempNickName);
@@ -99,9 +102,9 @@ public class MeFragment extends BaseFragment {
 
     //退出登录
     public void Logout() {
-        // TODO Auto-generated method stub
         final Intent intent = new Intent();
         UserInfo info = JMessageClient.getMyInfo();
+        Logger.i(TAG, "[Logout] userinfo: "+info);
         if (null != info) {
             intent.putExtra("userName", info.getUserName());
             File file = info.getAvatarFile();
