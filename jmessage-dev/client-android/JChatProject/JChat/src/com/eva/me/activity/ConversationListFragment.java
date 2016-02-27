@@ -55,14 +55,16 @@ public class ConversationListFragment extends BaseFragment {
         LayoutInflater layoutInflater = getActivity().getLayoutInflater();
         mRootView = layoutInflater.inflate(R.layout.fragment_conv_list,
                 (ViewGroup) getActivity().findViewById(R.id.main_view), false);
+
         mConvListView = new ConversationListView(mRootView, this.getActivity());
         mConvListView.initModule();
-        mMenuView = getActivity().getLayoutInflater().inflate(R.layout.drop_down_menu, null);
+
         mConvListController = new ConversationListController(mConvListView, this, mDensityDpi, mWidth);
         mConvListView.setListener(mConvListController);
         mConvListView.setItemListeners(mConvListController);
         mConvListView.setLongClickListener(mConvListController);
 
+        mMenuView = getActivity().getLayoutInflater().inflate(R.layout.drop_down_menu, null);
         mMenuPopWindow = new PopupWindow(mMenuView, WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT, true);
         mMenuItemView = new MenuItemView(mMenuView);
