@@ -27,6 +27,7 @@ import com.eva.me.controller.ConversationListController;
 import com.eva.me.controller.MenuItemController;
 import com.eva.me.entity.Event;
 import com.eva.me.tools.HandleResponseCode;
+import com.eva.me.tools.Logger;
 import com.eva.me.view.ConversationListView;
 import com.eva.me.view.MenuItemView;
 
@@ -47,7 +48,6 @@ public class ConversationListFragment extends BaseFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         mContext = this.getActivity();
         JMessageClient.registerEventReceiver(this);
@@ -62,6 +62,7 @@ public class ConversationListFragment extends BaseFragment {
         mConvListView.setListener(mConvListController);
         mConvListView.setItemListeners(mConvListController);
         mConvListView.setLongClickListener(mConvListController);
+
         mMenuPopWindow = new PopupWindow(mMenuView, WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT, true);
         mMenuItemView = new MenuItemView(mMenuView);
@@ -103,7 +104,7 @@ public class ConversationListFragment extends BaseFragment {
      */
     public void onEvent(MessageEvent event) {
         Message msg = event.getMessage();
-        Log.d("JMessage", "收到消息：msg = " + msg.toString());
+        Logger.d(TAG, "[JMessage] 收到消息：msg = " + msg.toString());
         ConversationType convType = msg.getTargetType();
         if (convType == ConversationType.group) {
             long groupID = ((GroupInfo) msg.getTargetInfo()).getGroupID();
