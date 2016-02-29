@@ -50,7 +50,7 @@ public class ConversationListController implements OnClickListener,
         mDatas = JMessageClient.getConversationList();
         //对会话列表进行时间排序
         if (mDatas.size() > 1) {
-            SortConvList sortList = new SortConvList();
+            SortConvList sortList = new SortConvList();//custom comparator, sort by last chat time
             Collections.sort(mDatas, sortList);
         }
 
@@ -70,7 +70,6 @@ public class ConversationListController implements OnClickListener,
     // 点击会话列表
     @Override
     public void onItemClick(AdapterView<?> viewAdapter, View view, int position, long id) {
-        // TODO Auto-generated method stub
         final Intent intent = new Intent();
         // 当前点击的会话是否为群组
         if (mDatas.get(position).getType().equals(ConversationType.group)) {
