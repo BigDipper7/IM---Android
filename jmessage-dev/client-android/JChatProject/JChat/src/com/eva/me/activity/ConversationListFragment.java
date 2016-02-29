@@ -107,6 +107,7 @@ public class ConversationListFragment extends BaseFragment {
     public void onEvent(MessageEvent event) {
         Message msg = event.getMessage();
         Logger.d(TAG, "[JMessage] 收到消息：msg = " + msg.toString());
+
         ConversationType convType = msg.getTargetType();
         if (convType == ConversationType.group) {
             long groupID = ((GroupInfo) msg.getTargetInfo()).getGroupID();
