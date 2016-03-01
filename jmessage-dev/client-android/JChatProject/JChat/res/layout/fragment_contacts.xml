@@ -21,13 +21,14 @@
             android:cursorVisible="true"
             android:textCursorDrawable="@drawable/text_cursor_bg"
             android:hint="搜索..."
+            android:textColorHint="@color/jpush_blue"
             android:padding="10dp"
             android:textColor="#808080"
             android:textSize="24sp" />
 
         <ImageButton
             android:id="@+id/search_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:background="@drawable/search_btn_bg" />

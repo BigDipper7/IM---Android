@@ -3,6 +3,9 @@ package com.eva.me.application;
 import android.app.Application;
 import android.util.Log;
 import cn.jpush.im.android.api.JMessageClient;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.eva.me.receiver.NotificationClickEventReceiver;
 import com.eva.me.tools.SharePreferenceManager;
 
@@ -40,6 +43,7 @@ public class JChatDemoApplication extends Application {
     public static final String MsgIDs = "msgIDs";
     public static final String PICTURE_DIR = "sdcard/JChatDemo/pictures/";
 
+    public static RequestQueue mRequestQueue = null;
 
     @Override
     public void onCreate() {
@@ -49,6 +53,8 @@ public class JChatDemoApplication extends Application {
         SharePreferenceManager.init(getApplicationContext(), JCHAT_CONFIGS);
         JMessageClient.setNotificationMode(JMessageClient.NOTI_MODE_DEFAULT);
         new NotificationClickEventReceiver(getApplicationContext());
+
+        mRequestQueue = Volley.newRequestQueue(getApplicationContext());
     }
 
 }

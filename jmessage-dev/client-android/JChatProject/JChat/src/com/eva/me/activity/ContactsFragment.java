@@ -24,7 +24,7 @@ public class ContactsFragment extends BaseFragment{
 		mContactsView.initModule();
 
 		mContactsController = new ContactsController(mContactsView, this);
-		mContactsView.setOnClickListener(mContactsController);
+		mContactsView.setListener(mContactsController);
     }
 	
 	@Override

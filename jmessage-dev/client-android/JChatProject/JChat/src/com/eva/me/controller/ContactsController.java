@@ -1,11 +1,20 @@
 package com.eva.me.controller;
 
+import android.app.DownloadManager;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.eva.me.R;
 import com.eva.me.activity.ContactsFragment;
+import com.eva.me.application.JChatDemoApplication;
 import com.eva.me.tools.HandleResponseCode;
 import com.eva.me.tools.Logger;
 import com.eva.me.view.ContactsView;
@@ -40,6 +49,22 @@ public class ContactsController implements OnClickListener {
 	 * get all user list, through HTTP REST api
 	 */
 	private void initAllUsers() {
+		if (JChatDemoApplication.mRequestQueue != null) {
+			Logger.i(TAG, "Application requestqueue not null");
+			String url = "http://www.baidu.com";
+			StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+				@Override
+				public void onResponse(String response) {
+					Logger.d(TAG, "[Volley] resp:"+response);
+				}
+			}, new Response.ErrorListener() {
+				@Override
+				public void onErrorResponse(VolleyError error) {
+					Logger.e(TAG, "[Volley] errResp:"+error);
+				}
+			});
+			JChatDemoApplication.mRequestQueue.add(stringRequest);
+		}
 	}
 
 	/**
@@ -52,7 +77,7 @@ public class ContactsController implements OnClickListener {
 				if (status == 0) {
 					//get list....
 					//List<Long> groupIDList;
-
+					Logger.i(TAG, "[MyGroupIDList] "+groupIDList);
 				}else {
 					Logger.i(TAG, "[GetGroupIDListCallback] desc = "+desc);
 					HandleResponseCode.onHandle(mContext, status, false);
@@ -66,7 +91,14 @@ public class ContactsController implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch(v.getId()){
-		
+			case R.id.search_btn:
+				Logger.i(TAG, "Before Looooooog.........");
+				initContacts();
+				Logger.i(TAG, "End Looooooog.........");
+				break;
+			default:
+				Logger.e(TAG, "Do not know id");
+				break;
 		}
 		
 	}
