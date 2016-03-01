@@ -5,6 +5,8 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,14 +23,22 @@ import com.android.volley.toolbox.StringRequest;
 import com.eva.me.R;
 import com.eva.me.activity.ContactsFragment;
 import com.eva.me.application.JChatDemoApplication;
+import com.eva.me.entity.RespResultAllUserList;
 import com.eva.me.tools.HandleResponseCode;
 import com.eva.me.tools.Logger;
 import com.eva.me.view.ContactsView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.android.api.callback.DownloadAvatarCallback;
+import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
 import cn.jpush.im.android.api.callback.GetGroupIDListCallback;
+import cn.jpush.im.android.api.model.UserInfo;
 
 public class ContactsController implements OnClickListener {
 	private static final String TAG = ContactsController.class.getSimpleName();
@@ -73,11 +83,13 @@ public class ContactsController implements OnClickListener {
 //			});
 //			JChatDemoApplication.mRequestQueue.add(stringRequest);
 
-			String apiUri = "https://api.im.jpush.cn/v1/users/?start=0&count=13";
+			String apiUri = "https://api.im.jpush.cn/v1/users/?start=0&count=300";
 			JsonRequest request = new JsonObjectRequest(Request.Method.GET, apiUri, new Response.Listener<JSONObject>() {
 				@Override
 				public void onResponse(JSONObject response) {
-					Logger.d(TAG, "[Volley] [JSONObject] is: "+response);
+					Logger.d(TAG, "[Volley] [JSONObject] is: " + response);
+					RespResultAllUserList result = resolveResp(response);
+					Logger.w(TAG, "[JSON]"+result);
 				}
 			}, new Response.ErrorListener() {
 				@Override
@@ -86,8 +98,6 @@ public class ContactsController implements OnClickListener {
 				}
 			})
 			{
-
-
 				@Override
 				public Map<String, String> getHeaders() throws AuthFailureError {
 					Map<String,String> headers = new HashMap<String, String>();
@@ -96,7 +106,6 @@ public class ContactsController implements OnClickListener {
 //					headers.put("","");
 					return headers;
 				}
-
 //				@Override
 //				protected Map<String, String> getParams() throws AuthFailureError {
 //					Map<String,String> params = new HashMap<String, String>();
@@ -108,6 +117,36 @@ public class ContactsController implements OnClickListener {
 
 			JChatDemoApplication.mRequestQueue.add(request);
 		}
+	}
+
+	private RespResultAllUserList resolveResp(JSONObject response) {
+		try {
+			List<String> allUserNameList = new ArrayList<String>();
+
+			int total = response.getInt("total");
+			int start = response.getInt("start");
+			int count = response.getInt("count");
+
+			//TODO: check 0-length of JSONArray
+			JSONArray userInfoList = response.getJSONArray("users");
+			for (int i=0;i<userInfoList.length();i++) {
+				JSONObject userInfo = userInfoList.getJSONObject(i);
+				String currentUserName = userInfo.getString("username");
+				allUserNameList.add(currentUserName);
+			}
+
+			RespResultAllUserList result = new RespResultAllUserList();
+			result.setNumTotal(total);
+			result.setNumCount(count);
+			result.setNumStart(start);
+			result.setAllUserNameList(allUserNameList);
+
+			return result;
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	/**
