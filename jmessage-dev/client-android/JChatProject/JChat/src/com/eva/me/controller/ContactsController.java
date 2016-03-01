@@ -6,11 +6,17 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.eva.me.R;
 import com.eva.me.activity.ContactsFragment;
@@ -18,6 +24,8 @@ import com.eva.me.application.JChatDemoApplication;
 import com.eva.me.tools.HandleResponseCode;
 import com.eva.me.tools.Logger;
 import com.eva.me.view.ContactsView;
+
+import org.json.JSONObject;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.callback.GetGroupIDListCallback;
@@ -64,6 +72,42 @@ public class ContactsController implements OnClickListener {
 				}
 			});
 			JChatDemoApplication.mRequestQueue.add(stringRequest);
+
+
+			String apiUri = "https://api.im.jpush.cn/v1/users/?start=0&count=13";
+			JsonRequest request = new JsonObjectRequest(Request.Method.GET, apiUri, new Response.Listener<JSONObject>() {
+				@Override
+				public void onResponse(JSONObject response) {
+					Logger.d(TAG, "[Volley] [JSONObject] is: "+response);
+				}
+			}, new Response.ErrorListener() {
+				@Override
+				public void onErrorResponse(VolleyError error) {
+					Logger.e(TAG, "[Volley] Error Response: "+error);
+				}
+			})
+			{
+
+
+				@Override
+				public Map<String, String> getHeaders() throws AuthFailureError {
+					Map<String,String> headers = new HashMap<String, String>();
+					headers.put("Authorization","Basic NDNmZGU4NTAzMjlhMjI2YWE1NTM2YzZmOjgyNDk0OWFmYzYzMjg1YTFmYTQ4ZTE4NA==");
+					headers.put("Content-Type","application/json");
+//					headers.put("","");
+					return headers;
+				}
+
+//				@Override
+//				protected Map<String, String> getParams() throws AuthFailureError {
+//					Map<String,String> params = new HashMap<String, String>();
+//					params.put("start","0");
+//					params.put("count","56");
+//					return params;
+//				}
+			};
+
+			JChatDemoApplication.mRequestQueue.add(request);
 		}
 	}
 
