@@ -59,20 +59,19 @@ public class ContactsController implements OnClickListener {
 	private void initAllUsers() {
 		if (JChatDemoApplication.mRequestQueue != null) {
 			Logger.i(TAG, "Application requestqueue not null");
-			String url = "http://www.baidu.com";
-			StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-				@Override
-				public void onResponse(String response) {
-					Logger.d(TAG, "[Volley] resp:"+response);
-				}
-			}, new Response.ErrorListener() {
-				@Override
-				public void onErrorResponse(VolleyError error) {
-					Logger.e(TAG, "[Volley] errResp:"+error);
-				}
-			});
-			JChatDemoApplication.mRequestQueue.add(stringRequest);
-
+//			String url = "http://www.baidu.com";
+//			StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+//				@Override
+//				public void onResponse(String response) {
+//					Logger.d(TAG, "[Volley] resp:"+response);
+//				}
+//			}, new Response.ErrorListener() {
+//				@Override
+//				public void onErrorResponse(VolleyError error) {
+//					Logger.e(TAG, "[Volley] errResp:"+error);
+//				}
+//			});
+//			JChatDemoApplication.mRequestQueue.add(stringRequest);
 
 			String apiUri = "https://api.im.jpush.cn/v1/users/?start=0&count=13";
 			JsonRequest request = new JsonObjectRequest(Request.Method.GET, apiUri, new Response.Listener<JSONObject>() {
