@@ -71,6 +71,10 @@ public class ContactsController implements OnClickListener {
 	private void initContactsListViewAdapter() {
 		List<String> mData = new ArrayList<String>();
 
+		for (int i = 0; i < 17; i++) {
+			mData.add("ap[pp ["+i+"]");
+		}
+
 		mListAdapter = new ContactsListAdapter(mContext, mData);
 		mContactsView.setContLVAdapter(mListAdapter);
 	}

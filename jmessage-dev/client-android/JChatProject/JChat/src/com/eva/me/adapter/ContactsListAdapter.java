@@ -58,7 +58,9 @@ public class ContactsListAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
 
-        return null;
+        holder.name.setText(mList.get(position));
+
+        return convertView;
     }
 
     private static class ViewHolder {
