@@ -117,8 +117,16 @@ public class ContactsController implements OnClickListener {
 
 			JChatDemoApplication.mRequestQueue.add(request);
 		}
+
+
 	}
 
+
+	/**
+	 * resolve the JSONObject response into Specified data structure
+	 * @param response
+	 * @return
+	 */
 	private RespResultAllUserList resolveResp(JSONObject response) {
 		try {
 			List<String> allUserNameList = new ArrayList<String>();

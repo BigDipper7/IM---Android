@@ -49,19 +49,19 @@ public class SettingActivity extends BaseActivity implements OnClickListener{
 	public void onClick(View v) {
         Intent intent;
 		switch(v.getId()){
-		case R.id.return_btn:
-			finish();
-			break;
-		case R.id.notification_rl:
-            intent = new Intent();
-			intent.setClass(mContext, NotificationSettingActivity.class);
-			startActivity(intent);
-			break;
-		case R.id.disturb_mode_rl:
-            intent = new Intent();
-            intent.setClass(mContext, DisturbSettingActivity.class);
-            startActivity(intent);
-			break;
+			case R.id.return_btn:
+				finish();
+				break;
+			case R.id.notification_rl:
+				intent = new Intent();
+				intent.setClass(mContext, NotificationSettingActivity.class);
+				startActivity(intent);
+				break;
+			case R.id.disturb_mode_rl:
+				intent = new Intent();
+				intent.setClass(mContext, DisturbSettingActivity.class);
+				startActivity(intent);
+				break;
             case R.id.change_password_rl:
                 Dialog dialog = DialogCreator.createResetPwdDialog(this);
                 dialog.show();
