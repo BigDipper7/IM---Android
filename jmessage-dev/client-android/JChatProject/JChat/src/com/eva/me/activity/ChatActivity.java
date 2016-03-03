@@ -278,6 +278,12 @@ public class ChatActivity extends BaseActivity {
         }
     }
 
+    /**
+     * just start detailed page with such app
+     * @param isGroup
+     * @param targetID
+     * @param groupID
+     */
     public void startChatDetailActivity(boolean isGroup, String targetID, long groupID) {
         Intent intent = new Intent();
         intent.putExtra(JChatDemoApplication.IS_GROUP, isGroup);

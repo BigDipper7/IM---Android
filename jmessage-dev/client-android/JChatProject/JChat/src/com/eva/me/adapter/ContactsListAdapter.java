@@ -66,7 +66,7 @@ public class ContactsListAdapter extends BaseAdapter{
     }
 
     @Override
-    public Object getItem(int i) {
+    public UserInfo getItem(int i) {
         return mData.get(i);
     }
 

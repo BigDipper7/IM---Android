@@ -21,6 +21,7 @@ import cn.jpush.im.android.api.model.UserInfo;
 import com.eva.me.R;
 import com.eva.me.tools.BitmapLoader;
 import com.eva.me.tools.HandleResponseCode;
+import com.eva.me.tools.Logger;
 import com.eva.me.view.CircleImageView;
 
 public class GroupMemberGridAdapter extends BaseAdapter {
@@ -203,6 +204,7 @@ public class GroupMemberGridAdapter extends BaseAdapter {
         } else {
             if (position == 0) {
                 Conversation conv = JMessageClient.getSingleConversation(mTargetId);
+                Logger.d(TAG,"conversiton: "+conv);
                 UserInfo userInfo = (UserInfo) conv.getTargetInfo();
                 if (!TextUtils.isEmpty(userInfo.getAvatar())) {
                     userInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
