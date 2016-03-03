@@ -28,16 +28,18 @@ public class ContactsListAdapter extends BaseAdapter{
 
     private static final String TAG = ContactsListAdapter.class.getSimpleName();
 
-    private List<String> mList;
+//    private List<String> mList;
     private List<UserInfo> mData;
     private Context mContext;
     private LayoutInflater mInflater;
+    private int mDensityDpi;
 
-    public ContactsListAdapter(Context context, List<String> list){
+    public ContactsListAdapter(Context context, List<UserInfo> mData, int densityDpi){
         this.mContext = context;
-        this.mList = list;
+//        this.mList = list;
         this.mInflater = LayoutInflater.from(context);
-        this.mData = new ArrayList<UserInfo>();
+        this.mData = mData;
+        this.mDensityDpi = densityDpi;
     }
 
     public void setmData(List<UserInfo> mNewData) {
@@ -77,13 +79,24 @@ public class ContactsListAdapter extends BaseAdapter{
         Logger.d(TAG, "get view at : "+position);
 
         final ViewHolder viewHolder;
+
         if (convertView == null) {
             Logger.d(TAG, "convertView is null");
             convertView = mInflater.inflate(R.layout.list_view_contact_item, null);
+
             viewHolder = new ViewHolder();
             viewHolder.alpha = (TextView) convertView.findViewById(R.id.alpha);
-            viewHolder.name = (TextView) convertView.findViewById(R.id.name);
+            viewHolder.userName = (TextView) convertView.findViewById(R.id.name);
             viewHolder.headIcon = (ImageView) convertView.findViewById(R.id.imageView);
+
+            if (mDensityDpi <= 160) {
+                viewHolder.userName.setEms(6);
+            }else if (mDensityDpi <= 240) {
+                viewHolder.userName.setEms(8);
+            }else {
+                viewHolder.userName.setEms(10);
+            }
+
             convertView.setTag(viewHolder);
         } else {
             Logger.d(TAG, "convertView is not null");
@@ -93,7 +106,7 @@ public class ContactsListAdapter extends BaseAdapter{
         //init current item view
         UserInfo userInfo = mData.get(position);
         Logger.d(TAG, "[userinfo] current user info is "+userInfo);
-        viewHolder.name.setText(TextUtils.isEmpty(userInfo.getNickname()) ? userInfo.getUserName() : userInfo.getNickname());
+        viewHolder.userName.setText(TextUtils.isEmpty(userInfo.getNickname()) ? userInfo.getUserName() : userInfo.getNickname());
 
         if (!TextUtils.isEmpty(userInfo.getAvatar())) {
             userInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
@@ -117,6 +130,6 @@ public class ContactsListAdapter extends BaseAdapter{
     private static class ViewHolder {
         TextView alpha;
         ImageView headIcon;
-        TextView name;
+        TextView userName;
     }
 }
