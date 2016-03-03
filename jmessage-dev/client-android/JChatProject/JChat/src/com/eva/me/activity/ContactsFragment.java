@@ -23,8 +23,7 @@ public class ContactsFragment extends BaseFragment{
 		mContactsView = (ContactsView) mRootView.findViewById(R.id.contacts_view);
 		mContactsView.initModule();
 
-		mContactsController = new ContactsController(mContactsView, this, mDensityDpi
-		);
+		mContactsController = new ContactsController(mContactsView, this, mDensityDpi);
 		mContactsView.setListener(mContactsController);
     }
 

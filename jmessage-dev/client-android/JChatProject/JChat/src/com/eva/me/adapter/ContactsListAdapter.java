@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.eva.me.R;
 import com.eva.me.tools.HandleResponseCode;
 import com.eva.me.tools.Logger;
+import com.eva.me.view.CircleImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +88,7 @@ public class ContactsListAdapter extends BaseAdapter{
             viewHolder = new ViewHolder();
             viewHolder.alpha = (TextView) convertView.findViewById(R.id.alpha);
             viewHolder.userName = (TextView) convertView.findViewById(R.id.name);
-            viewHolder.headIcon = (ImageView) convertView.findViewById(R.id.imageView);
+            viewHolder.headIcon = (CircleImageView) convertView.findViewById(R.id.contact_avatar);
 
             if (mDensityDpi <= 160) {
                 viewHolder.userName.setEms(6);
@@ -129,7 +130,7 @@ public class ContactsListAdapter extends BaseAdapter{
 
     private static class ViewHolder {
         TextView alpha;
-        ImageView headIcon;
+        CircleImageView headIcon;
         TextView userName;
     }
 }

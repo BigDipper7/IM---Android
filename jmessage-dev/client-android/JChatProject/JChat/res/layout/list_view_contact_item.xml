@@ -21,10 +21,10 @@
         android:padding="10dp">
 
     <!-- 联系人信息 -->
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <com.eva.me.view.CircleImageView
+        android:id="@+id/contact_avatar"
+        android:layout_width="@dimen/item_head_icon_size"
+        android:layout_height="@dimen/item_head_icon_size"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="5dp"
         android:src="@drawable/head_icon" />
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_centerInParent="true"
-        android:layout_toRightOf="@id/imageView"
+        android:layout_toRightOf="@id/contact_avatar"
         android:singleLine="true"
         android:text="text"
         android:textSize="20sp"
