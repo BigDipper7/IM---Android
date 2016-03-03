@@ -1,6 +1,8 @@
 package com.eva.me.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.eva.me.R;
+import com.eva.me.tools.HandleResponseCode;
+import com.eva.me.tools.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
 import cn.jpush.im.android.api.model.UserInfo;
 
 
@@ -20,6 +25,8 @@ import cn.jpush.im.android.api.model.UserInfo;
  * Created by Ken on 2015/2/26.
  */
 public class ContactsListAdapter extends BaseAdapter{
+
+    private static final String TAG = ContactsListAdapter.class.getSimpleName();
 
     private List<String> mList;
     private List<UserInfo> mData;
@@ -49,15 +56,15 @@ public class ContactsListAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        if (mList == null) {
+        if (mData == null) {
             return 0;
         }
-        return mList.size();
+        return mData.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return mList.get(i);
+        return mData.get(i);
     }
 
     @Override
@@ -67,18 +74,42 @@ public class ContactsListAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        Logger.d(TAG, "get view at : "+position);
+
+        final ViewHolder viewHolder;
         if (convertView == null) {
+            Logger.d(TAG, "convertView is null");
             convertView = mInflater.inflate(R.layout.list_view_contact_item, null);
-            holder = new ViewHolder();
-            holder.alpha = (TextView) convertView.findViewById(R.id.alpha);
-            holder.name = (TextView) convertView.findViewById(R.id.name);
-            convertView.setTag(holder);
+            viewHolder = new ViewHolder();
+            viewHolder.alpha = (TextView) convertView.findViewById(R.id.alpha);
+            viewHolder.name = (TextView) convertView.findViewById(R.id.name);
+            viewHolder.headIcon = (ImageView) convertView.findViewById(R.id.imageView);
+            convertView.setTag(viewHolder);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            Logger.d(TAG, "convertView is not null");
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        holder.name.setText(mList.get(position));
+        //init current item view
+        UserInfo userInfo = mData.get(position);
+        Logger.d(TAG, "[userinfo] current user info is "+userInfo);
+        viewHolder.name.setText(TextUtils.isEmpty(userInfo.getNickname()) ? userInfo.getUserName() : userInfo.getNickname());
+
+        if (!TextUtils.isEmpty(userInfo.getAvatar())) {
+            userInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
+                @Override
+                public void gotResult(int status, String desc, Bitmap bitmap) {
+                    if (status == 0) {
+                        viewHolder.headIcon.setImageBitmap(bitmap);
+                    }else {
+                        viewHolder.headIcon.setImageResource(R.drawable.head_icon);
+                        HandleResponseCode.onHandle(mContext, status, false);
+                    }
+                }
+            });
+        }else {
+            viewHolder.headIcon.setImageResource(R.drawable.head_icon);
+        }
 
         return convertView;
     }
