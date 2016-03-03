@@ -137,6 +137,7 @@ public class UserContactsUtil {
 
 
 	private static void getAllUserInfoFromUserNameList(List<String> userNameList, final ContactsFragment mContactsFragment) {
+//		final List<UserInfo> temp = new ArrayList<UserInfo>();
 		for (final String userName :
 				userNameList) {
 			JMessageClient.getUserInfo(userName, new GetUserInfoCallback() {
@@ -145,6 +146,7 @@ public class UserContactsUtil {
 					if (mContactsFragment != null) {
 						if (status == 0) {
 							mContactsFragment.getmContactsController().addUIinLVDataset(userInfo);
+//							temp.add(userInfo);
 							Logger.i(TAG,"[Add UserInfo volley] : "+userInfo);
 						}else {
 							Logger.e(TAG, String.format("[Callback Error] : status code:%d description:%s",status,desc));
