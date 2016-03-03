@@ -10,8 +10,10 @@ import android.widget.TextView;
 
 import com.eva.me.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import cn.jpush.im.android.api.model.UserInfo;
 
 
 /**
@@ -20,6 +22,7 @@ import java.util.List;
 public class ContactsListAdapter extends BaseAdapter{
 
     private List<String> mList;
+    private List<UserInfo> mData;
     private Context mContext;
     private LayoutInflater mInflater;
 
@@ -27,11 +30,28 @@ public class ContactsListAdapter extends BaseAdapter{
         this.mContext = context;
         this.mList = list;
         this.mInflater = LayoutInflater.from(context);
+        this.mData = new ArrayList<UserInfo>();
+    }
 
+    public void setmData(List<UserInfo> mNewData) {
+        this.mData = mNewData;
+        notifyDataSetChanged();
+    }
+
+    public void addUserInfo(UserInfo mNewUserInfo) {
+        if (mData == null) {
+            mData = new ArrayList<UserInfo>();
+        }
+
+        mData.add(mNewUserInfo);
+        notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
+        if (mList == null) {
+            return 0;
+        }
         return mList.size();
     }
 

@@ -26,7 +26,11 @@ public class ContactsFragment extends BaseFragment{
 		mContactsController = new ContactsController(mContactsView, this);
 		mContactsView.setListener(mContactsController);
     }
-	
+
+	public ContactsController getmContactsController() {
+		return mContactsController;
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

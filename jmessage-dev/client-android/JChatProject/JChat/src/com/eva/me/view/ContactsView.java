@@ -14,6 +14,10 @@ import android.widget.AdapterView.OnItemLongClickListener;
 
 import com.eva.me.R;
 
+import java.util.List;
+
+import cn.jpush.im.android.api.model.UserInfo;
+
 
 public class ContactsView extends LinearLayout{
 

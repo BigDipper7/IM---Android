@@ -50,20 +50,22 @@ public class ContactsController implements OnClickListener {
 	private Context mContext;
 
 	private ContactsListAdapter mListAdapter;
+
+
 	
 	public ContactsController(ContactsView mContactsView, ContactsFragment context) {
 		this.mContactsView = mContactsView;
 		this.mContactsActivity = context;
 		this.mContext = context.getActivity();
-		initContacts();
 		initContactsListViewAdapter();
+		initContacts();
 	}
 
 	public void initContacts() {
         //初始化用户名列表
         List<String> userNameList = new ArrayList<String>();
 
-		UserContactsUtil.initAllUsers();
+		UserContactsUtil.initAllUsers(mContactsActivity);
 		UserContactsUtil.initMyGroups(mContext);
 
     }
@@ -77,6 +79,15 @@ public class ContactsController implements OnClickListener {
 
 		mListAdapter = new ContactsListAdapter(mContext, mData);
 		mContactsView.setContLVAdapter(mListAdapter);
+	}
+
+
+	public void refreshLVDataset(List<UserInfo> mNewData) {
+		mListAdapter.setmData(mNewData);
+	}
+
+	public void addUIinLVDataset(UserInfo mNewUserInfo) {
+		mListAdapter.addUserInfo(mNewUserInfo);
 	}
 
 
