@@ -13,12 +13,16 @@ import java.util.List;
 import com.eva.me.R;
 import com.eva.me.activity.ChatDetailActivity;
 import com.eva.me.activity.ContactsFragment;
+import com.eva.me.activity.FriendInfoActivity;
+import com.eva.me.activity.MeInfoActivity;
 import com.eva.me.adapter.ContactsListAdapter;
 import com.eva.me.application.JChatDemoApplication;
 import com.eva.me.tools.Logger;
 import com.eva.me.tools.UserContactsUtil;
 import com.eva.me.view.ContactsView;
 
+import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.android.api.enums.MessageDirect;
 import cn.jpush.im.android.api.model.UserInfo;
 
 public class ContactsController implements OnClickListener
@@ -106,8 +110,24 @@ public class ContactsController implements OnClickListener
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		UserInfo mCurrItemUI = mListAdapter.getItem(position);
-		Logger.i(TAG, "My Current UI is: "+mCurrItemUI);
-		startChatDetailActivity(false, mCurrItemUI.getUserName(), 0);
+		String mTargetId = mCurrItemUI.getUserName();
+		Logger.i(TAG, "My Current UI is: " + mCurrItemUI);
+//		startChatDetailActivity(false, mCurrItemUI.getUserName(), 0);
+		Intent intent = new Intent();
+		if (mTargetId.equals(JMessageClient.getMyInfo().getUserName())) {
+			intent.putExtra(JChatDemoApplication.TARGET_ID, mTargetId);
+			Logger.i(TAG, "msg.getFromName() " + mTargetId);
+			intent.setClass(mContext, MeInfoActivity.class);
+			mContext.startActivity(intent);
+		} else {
+//			String targetID = userInfo.getUserName();
+			intent.putExtra(JChatDemoApplication.TARGET_ID, mTargetId);
+//			intent.putExtra(JChatDemoApplication.TARGET_ID, targetID);
+			intent.putExtra(JChatDemoApplication.GROUP_ID, 0L);
+			intent.setClass(mContext, FriendInfoActivity.class);
+			mContactsActivity.startActivityForResult(intent,
+					JChatDemoApplication.REQUEST_CODE_FRIEND_INFO);
+		}
 	}
 
 	/**
@@ -116,14 +136,29 @@ public class ContactsController implements OnClickListener
 	 * @param targetID
 	 * @param groupID
 	 */
+	@Deprecated
 	public void startChatDetailActivity(boolean isGroup, String targetID, long groupID) {
-		Intent intent = new Intent();
-		intent.putExtra(JChatDemoApplication.IS_GROUP, isGroup);
-		intent.putExtra(JChatDemoApplication.TARGET_ID, targetID);
-		intent.putExtra(JChatDemoApplication.GROUP_ID, groupID);
-		intent.setClass(mContext, ChatDetailActivity.class);
-//		startActivityForResult(intent, JChatDemoApplication.REQUEST_CODE_CHAT_DETAIL);
-		mContactsActivity.startActivityForResult(intent, JChatDemoApplication.REQUEST_CODE_CHAT_DETAIL);
+//		Intent intent = new Intent();
+//		intent.putExtra(JChatDemoApplication.IS_GROUP, isGroup);
+//		intent.putExtra(JChatDemoApplication.TARGET_ID, targetID);
+//		intent.putExtra(JChatDemoApplication.GROUP_ID, groupID);
+//		intent.setClass(mContext, ChatDetailActivity.class);
+////		startActivityForResult(intent, JChatDemoApplication.REQUEST_CODE_CHAT_DETAIL);
+//		mContactsActivity.startActivityForResult(intent, JChatDemoApplication.REQUEST_CODE_CHAT_DETAIL);
+//		Intent intent = new Intent();
+//		if () {
+//			intent.putExtra(JChatDemoApplication.TARGET_ID, mTargetId);
+//			Log.i(TAG, "msg.getFromName() " + mTargetId);
+//			intent.setClass(mContext, MeInfoActivity.class);
+//			mContext.startActivity(intent);
+//		} else {
+//			String targetID = userInfo.getUserName();
+//			intent.putExtra(JChatDemoApplication.TARGET_ID, targetID);
+//			intent.putExtra(JChatDemoApplication.GROUP_ID, mGroupId);
+//			intent.setClass(mContext, FriendInfoActivity.class);
+//			((Activity) mContext).startActivityForResult(intent,
+//					JChatDemoApplication.REQUEST_CODE_FRIEND_INFO);
+//		}
 	}
 
 

@@ -77,7 +77,7 @@ public class ChatController implements OnClickListener, View.OnTouchListener,
         if (mIsGroup) {
             Log.i("Tag", "mGroupId is " + mGroupId);
             //判断是否从创建群组跳转过来
-            if (fromGroup) {
+            if (fromGroup) {//if true, title :"群聊(mem_count:1)"
                 mChatView.setChatTitle(mContext.getString(R.string.group),
                         intent.getIntExtra("memberCount", 0));
                 mConv = JMessageClient.getGroupConversation(mGroupId);

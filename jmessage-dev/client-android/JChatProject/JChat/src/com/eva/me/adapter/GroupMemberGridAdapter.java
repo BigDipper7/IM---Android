@@ -204,7 +204,12 @@ public class GroupMemberGridAdapter extends BaseAdapter {
         } else {
             if (position == 0) {
                 Conversation conv = JMessageClient.getSingleConversation(mTargetId);
-                Logger.d(TAG,"conversiton: "+conv);
+//                Logger.d(TAG,"conversiton: "+conv);
+//                if (conv == null) {
+//                    Logger.d(TAG, "Must create");
+//                    conv = Conversation.createSingleConversation(mTargetId);
+//                }
+
                 UserInfo userInfo = (UserInfo) conv.getTargetInfo();
                 if (!TextUtils.isEmpty(userInfo.getAvatar())) {
                     userInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {

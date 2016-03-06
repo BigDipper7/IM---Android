@@ -41,7 +41,11 @@ public class FriendInfoActivity extends BaseActivity {
         mGroupId = getIntent().getLongExtra(JChatDemoApplication.GROUP_ID, 0);
         Conversation conv;
         conv = JMessageClient.getSingleConversation(mTargetId);
-        if (conv == null) {
+        if (conv == null && mGroupId == 0) {
+            //it indicates that this is a conversation that should be created
+            //TODO: this may exits some portatial bug for this conversation should not be established
+            conv = Conversation.createSingleConversation(mTargetId);
+        }else if (conv == null && mGroupId != 0) {
             conv = JMessageClient.getGroupConversation(mGroupId);
             GroupInfo groupInfo = (GroupInfo) conv.getTargetInfo();
             mUserInfo = groupInfo.getGroupMemberInfo(mTargetId);
