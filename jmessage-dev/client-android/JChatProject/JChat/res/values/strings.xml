@@ -22,6 +22,10 @@
     <string name="password_length_illegal">密码长度要在4-128个字节之间</string>
     <string name="password_same_to_previous">不能和原密码相同，请输入新密码</string>
 
+    <!-- ContactsFragment界面中使用到的字符串 -->
+    <string name="expandable_list_view_header_groups_name">我的群组</string>
+    <string name="expandable_list_view_header_users_name">我的联系人</string>
+
     <!-- fixProfile界面中使用到的字符串 -->
     <string name="nickname_hit">昵称</string>
     <string name="take_new_photo">拍摄照片</string>

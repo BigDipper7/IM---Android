@@ -62,38 +62,41 @@ public class ContactsController implements OnClickListener
     }
 
 	private void initContactsListViewAdapter() {
-		List<String> mData = new ArrayList<String>();
+//		List<String> mData = new ArrayList<String>();
+//
+//		for (int i = 0; i < 17; i++) {
+//			mData.add("ap[pp ["+i+"]");
+//		}
 
-		for (int i = 0; i < 17; i++) {
-			mData.add("ap[pp ["+i+"]");
-		}
-
+//		List<String> headerData = new ArrayList<String>();
+//		headerData.add("group1");
+//		headerData.add("group3");
+//		headerData.add("group2");
+//		headerData.add("group5");
+//
+//		Map<String,List<String>> childData = new HashMap<String, List<String>>();
+//		for (String s :
+//				headerData) {
+//			List<String> te = new ArrayList<String>();
+//			te.add(s+"1");
+//			te.add(s+"2");
+//			te.add(s+"3");
+//			childData.put(s,te);
+//		}
 
 		List<String> headerData = new ArrayList<String>();
-		headerData.add("group1");
-		headerData.add("group3");
-		headerData.add("group2");
-		headerData.add("group5");
-
 		Map<String,List<String>> childData = new HashMap<String, List<String>>();
-		for (String s :
-				headerData) {
-			List<String> te = new ArrayList<String>();
-			te.add(s+"1");
-			te.add(s+"2");
-			te.add(s+"3");
-			childData.put(s,te);
-		}
 
-
+		headerData.add(mContext.getString(R.string.expandable_list_view_header_groups_name));
+		headerData.add(mContext.getString(R.string.expandable_list_view_header_users_name));
 
 		mExpandableListAdapter = new ContactsExpaListAdapter(mContext, headerData, childData);
 		mContactsView.setContLVAdapter(mExpandableListAdapter);
 
-//		List<UserInfo> mData = new ArrayList<UserInfo>();
-//
-//		mListAdapter = new ContactsListAdapter(mContext, mData, mDensityDpi);
-//		mContactsView.setContLVAdapter(mListAdapter);
+		List<UserInfo> mData = new ArrayList<UserInfo>();
+
+		mListAdapter = new ContactsListAdapter(mContext, mData, mDensityDpi);
+		mContactsView.setContLVAdapter(mListAdapter);
 	}
 
 
