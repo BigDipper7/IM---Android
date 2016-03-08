@@ -152,6 +152,7 @@
                 android:background="@color/me_split_line_color" />
 
             <ListView
+                android:visibility="gone"
                 android:id="@+id/contact_list_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -161,6 +162,17 @@
                 android:scrollbars="none"
                 android:scrollingCache="true" >
             </ListView>
+
+            <ExpandableListView
+                android:id="@+id/contact_expandable_list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/conv_list_split_line_color"
+                android:dividerHeight="1dp"
+                android:scrollingCache="true">
+
+            </ExpandableListView>
+
 
         </LinearLayout>
 

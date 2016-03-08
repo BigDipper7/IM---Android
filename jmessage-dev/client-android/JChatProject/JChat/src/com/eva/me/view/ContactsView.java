@@ -3,6 +3,8 @@ package com.eva.me.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.Adapter;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,6 +28,7 @@ public class ContactsView extends LinearLayout{
 
 	private ImageButton mSearchBtnIB;
 	private ListView mContListView;
+	private ExpandableListView mContExpanListView;
 
 
 	public ContactsView(Context context, AttributeSet attrs) {
@@ -39,11 +42,16 @@ public class ContactsView extends LinearLayout{
 
 		mSearchBtnIB = (ImageButton) findViewById(R.id.search_btn);
 		mContListView = (ListView) findViewById(R.id.contact_list_view);
+		mContExpanListView = (ExpandableListView) findViewById(R.id.contact_expandable_list_view);
 	}
 
 
 	public void setContLVAdapter(ListAdapter adapter) {
 		mContListView.setAdapter(adapter);
+	}
+
+	public void setContLVAdapter(ExpandableListAdapter expandableListAdapter) {
+		mContExpanListView.setAdapter(expandableListAdapter);
 	}
 
 	public void setItemListeners(OnItemClickListener onClickListener) {

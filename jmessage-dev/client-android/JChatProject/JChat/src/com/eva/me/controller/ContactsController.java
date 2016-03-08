@@ -5,16 +5,20 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.ExpandableListAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.eva.me.R;
 import com.eva.me.activity.ChatDetailActivity;
 import com.eva.me.activity.ContactsFragment;
 import com.eva.me.activity.FriendInfoActivity;
 import com.eva.me.activity.MeInfoActivity;
+import com.eva.me.adapter.ContactsExpaListAdapter;
 import com.eva.me.adapter.ContactsListAdapter;
 import com.eva.me.application.JChatDemoApplication;
 import com.eva.me.tools.Logger;
@@ -34,6 +38,7 @@ public class ContactsController implements OnClickListener
 	private Context mContext;
 
 	private ContactsListAdapter mListAdapter;
+	private ContactsExpaListAdapter mExpandableListAdapter;
 	private	int mDensityDpi = 0;
 
 	
@@ -57,16 +62,38 @@ public class ContactsController implements OnClickListener
     }
 
 	private void initContactsListViewAdapter() {
-//		List<String> mData = new ArrayList<String>();
+		List<String> mData = new ArrayList<String>();
+
+		for (int i = 0; i < 17; i++) {
+			mData.add("ap[pp ["+i+"]");
+		}
+
+
+		List<String> headerData = new ArrayList<String>();
+		headerData.add("group1");
+		headerData.add("group3");
+		headerData.add("group2");
+		headerData.add("group5");
+
+		Map<String,List<String>> childData = new HashMap<String, List<String>>();
+		for (String s :
+				headerData) {
+			List<String> te = new ArrayList<String>();
+			te.add(s+"1");
+			te.add(s+"2");
+			te.add(s+"3");
+			childData.put(s,te);
+		}
+
+
+
+		mExpandableListAdapter = new ContactsExpaListAdapter(mContext, headerData, childData);
+		mContactsView.setContLVAdapter(mExpandableListAdapter);
+
+//		List<UserInfo> mData = new ArrayList<UserInfo>();
 //
-//		for (int i = 0; i < 17; i++) {
-//			mData.add("ap[pp ["+i+"]");
-//		}
-
-		List<UserInfo> mData = new ArrayList<UserInfo>();
-
-		mListAdapter = new ContactsListAdapter(mContext, mData, mDensityDpi);
-		mContactsView.setContLVAdapter(mListAdapter);
+//		mListAdapter = new ContactsListAdapter(mContext, mData, mDensityDpi);
+//		mContactsView.setContLVAdapter(mListAdapter);
 	}
 
 
