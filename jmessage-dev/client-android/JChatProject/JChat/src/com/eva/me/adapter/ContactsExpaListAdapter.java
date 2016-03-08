@@ -44,7 +44,7 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
             return 0;
         if (mChildData == null)
             return 0;
-        return mChildData.get(mHeaderData.get(groupPosition)).size();
+        return mChildData.get(mHeaderData.get(groupPosition)) == null? 0: mChildData.get(mHeaderData.get(groupPosition)).size();
     }
 
     @Override
