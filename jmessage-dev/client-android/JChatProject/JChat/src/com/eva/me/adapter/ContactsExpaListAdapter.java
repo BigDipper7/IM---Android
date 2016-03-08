@@ -14,6 +14,7 @@ import com.eva.me.view.CircleImageView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,55 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
     }
+
+    //================= data refresh methods ========
+
+    /**
+     * replace the LIST
+     * @param headerData
+     */
+    public void refreshHeaderData(List<String> headerData) {
+        this.mHeaderData = headerData;
+        notifyDataSetChanged();
+    }
+
+    /**
+     * replace the MAP
+     * @param childData
+     */
+    public void refreshChildData(Map<String, List<String>> childData) {
+        this.mChildData = childData;
+        notifyDataSetChanged();
+    }
+
+    /**
+     * add new @param childDataItem to the position with headerName
+     * @param headerName
+     * @param childDataItem
+     */
+    public void refreshChildData(String headerName, String childDataItem) {
+        List<String > tempChildData = mChildData.get(headerName);
+        if (tempChildData == null) {
+            tempChildData = new ArrayList<String>();
+            mChildData.put(headerName,tempChildData);
+        }
+        tempChildData.add(childDataItem);
+        notifyDataSetChanged();
+    }
+
+    /**
+     * use new @param childData to replace origin data in headerName position
+     * @param headerName
+     * @param childData
+     */
+    public void refreshChildData(String headerName, List<String > childData) {
+        mChildData.put(headerName,childData);
+        notifyDataSetChanged();
+    }
+
+
+
+    //================= override methods ============
 
     @Override
     public int getGroupCount() {
