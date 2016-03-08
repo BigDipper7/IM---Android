@@ -2,6 +2,8 @@ package com.eva.me.adapter;
 
 import android.content.Context;
 import android.database.DataSetObserver;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.eva.me.R;
+import com.eva.me.tools.HandleResponseCode;
+import com.eva.me.tools.Logger;
 import com.eva.me.view.CircleImageView;
 
 import org.w3c.dom.Text;
@@ -18,16 +22,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
+import cn.jpush.im.android.api.model.GroupInfo;
+import cn.jpush.im.android.api.model.UserInfo;
+
 /**
  * Created by phoen_000 on 2016/3/8.
  */
 public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
+    private static final String TAG = ContactsExpaListAdapter.class.getSimpleName();
+
     private List<String> mHeaderData;
-    private Map<String,List<String>> mChildData;
+    private Map<String,List<Object>> mChildData;
     private Context mContext;
     private LayoutInflater mInflater;
 
-    public ContactsExpaListAdapter(Context context, List<String> headerData, Map<String, List<String>> childData) {
+    public ContactsExpaListAdapter(Context context, List<String> headerData, Map<String, List<Object>> childData) {
         this.mHeaderData = headerData;
         this.mChildData = childData;
         this.mContext = context;
@@ -49,7 +59,7 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
      * replace the MAP
      * @param childData
      */
-    public void refreshChildData(Map<String, List<String>> childData) {
+    public void refreshChildData(Map<String, List<Object>> childData) {
         this.mChildData = childData;
         notifyDataSetChanged();
     }
@@ -60,9 +70,9 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
      * @param childDataItem
      */
     public void refreshChildData(String headerName, String childDataItem) {
-        List<String > tempChildData = mChildData.get(headerName);
+        List<Object > tempChildData = mChildData.get(headerName);
         if (tempChildData == null) {
-            tempChildData = new ArrayList<String>();
+            tempChildData = new ArrayList<Object>();
             mChildData.put(headerName,tempChildData);
         }
         tempChildData.add(childDataItem);
@@ -74,7 +84,7 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
      * @param headerName
      * @param childData
      */
-    public void refreshChildData(String headerName, List<String > childData) {
+    public void refreshChildData(String headerName, List<Object > childData) {
         mChildData.put(headerName,childData);
         notifyDataSetChanged();
     }
@@ -103,7 +113,7 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public String getChild(int groupPosition, int childPosition) {
+    public Object getChild(int groupPosition, int childPosition) {
         return mChildData.get(mHeaderData.get(groupPosition)).get(childPosition);
     }
 
@@ -165,7 +175,34 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
         }
 
         //init views:
-        childViewHolder.userName.setText(getChild(groupPosition, childPosition));
+        if (getGroup(groupPosition).equals(mContext.getString(R.string.expandable_list_view_header_users_name))) {
+            //if now is in user info list
+            UserInfo userInfo = (UserInfo) getChild(groupPosition, childPosition);
+//            childViewHolder.userName.setText(currChildViewUI.getNickname() == null? currChildViewUI.getUserName(): currChildViewUI.getNickname());
+
+
+            Logger.d(TAG, "[userinfo] current user info is " + userInfo);
+            childViewHolder.userName.setText(TextUtils.isEmpty(userInfo.getNickname()) ? userInfo.getUserName() : userInfo.getNickname());
+
+            if (!TextUtils.isEmpty(userInfo.getAvatar())) {
+                userInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
+                    @Override
+                    public void gotResult(int status, String desc, Bitmap bitmap) {
+                        if (status == 0) {
+                            childViewHolder.headIcon.setImageBitmap(bitmap);
+                        }else {
+                            childViewHolder.headIcon.setImageResource(R.drawable.head_icon);
+                            HandleResponseCode.onHandle(mContext, status, false);
+                        }
+                    }
+                });
+            }else {
+                childViewHolder.headIcon.setImageResource(R.drawable.head_icon);
+            }
+
+        } else if (getGroup(groupPosition).equals(mContext.getString(R.string.expandable_list_view_header_groups_name))) {
+            //if now is in group info list
+        }
 
 
         return convertView;
