@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import com.eva.me.R;
 import com.eva.me.activity.ChatDetailActivity;
@@ -86,7 +87,7 @@ public class ContactsController implements OnClickListener
 //		}
 
 		List<String> headerData = new ArrayList<String>();
-		Map<String,List<String>> childData = new HashMap<String, List<String>>();
+		Map<String,List<Object>> childData = new HashMap<String, List<Object>>();
 
 		headerData.add(mContext.getString(R.string.expandable_list_view_header_groups_name));
 		headerData.add(mContext.getString(R.string.expandable_list_view_header_users_name));
@@ -107,6 +108,10 @@ public class ContactsController implements OnClickListener
 
 	public void addUIinLVDataset(UserInfo mNewUserInfo) {
 		mListAdapter.addUserInfo(mNewUserInfo);
+	}
+
+	public void addUIinELVDataset(UserInfo mNewUserInfo) {
+		mExpandableListAdapter.refreshChildData(mContext.getString(R.string.expandable_list_view_header_users_name), mNewUserInfo);
 	}
 
 

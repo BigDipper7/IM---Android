@@ -69,7 +69,7 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
      * @param headerName
      * @param childDataItem
      */
-    public void refreshChildData(String headerName, String childDataItem) {
+    public void refreshChildData(String headerName, Object childDataItem) {
         List<Object > tempChildData = mChildData.get(headerName);
         if (tempChildData == null) {
             tempChildData = new ArrayList<Object>();
@@ -137,6 +137,8 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+        Logger.d(TAG, String.format("[getGroupView] at (int groupPosition %d, boolean isExpanded %b)", groupPosition, isExpanded));
+
         final HeaderViewHilder headerViewHilder;
 
         if (convertView == null) {
@@ -158,6 +160,8 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+        Logger.d(TAG, String.format("[getChildView] at (int groupPosition %d, int childPosition %d, boolean isLastChild %b)", groupPosition, childPosition, isLastChild));
+
         final ChildViewHolder childViewHolder;
 
         if (convertView == null) {
@@ -223,7 +227,7 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
 
     private static class ChildViewHolder {
         TextView alpha;
-        ImageView headIcon;
+        CircleImageView headIcon;
         TextView userName;
     }
 

@@ -145,7 +145,8 @@ public class UserContactsUtil {
 				public void gotResult(int status, String desc, UserInfo userInfo) {
 					if (mContactsFragment != null) {
 						if (status == 0) {
-							mContactsFragment.getmContactsController().addUIinLVDataset(userInfo);
+//							mContactsFragment.getmContactsController().addUIinLVDataset(userInfo);
+							mContactsFragment.getmContactsController().addUIinELVDataset(userInfo);
 //							temp.add(userInfo);
 							Logger.i(TAG,"[Add UserInfo volley] : "+userInfo);
 						}else {
