@@ -183,9 +183,8 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
             //if now is in user info list
             UserInfo userInfo = (UserInfo) getChild(groupPosition, childPosition);
 //            childViewHolder.userName.setText(currChildViewUI.getNickname() == null? currChildViewUI.getUserName(): currChildViewUI.getNickname());
-
-
             Logger.d(TAG, "[userinfo] current user info is " + userInfo);
+
             childViewHolder.userName.setText(TextUtils.isEmpty(userInfo.getNickname()) ? userInfo.getUserName() : userInfo.getNickname());
 
             if (!TextUtils.isEmpty(userInfo.getAvatar())) {
@@ -206,6 +205,13 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
 
         } else if (getGroup(groupPosition).equals(mContext.getString(R.string.expandable_list_view_header_groups_name))) {
             //if now is in group info list
+            GroupInfo groupInfo = (GroupInfo) getChild(groupPosition, childPosition);
+
+            Logger.d(TAG, "[GroupInfo] current group info is " + groupInfo);
+
+            childViewHolder.headIcon.setImageResource(R.drawable.group);
+            childViewHolder.userName.setText(groupInfo.getGroupName());
+            Logger.d(TAG, "[GroupInfo] title: " + groupInfo.getGroupName());
         }
 
 

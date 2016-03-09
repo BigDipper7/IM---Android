@@ -28,6 +28,7 @@ import com.eva.me.view.ContactsView;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.enums.MessageDirect;
+import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.UserInfo;
 
 public class ContactsController implements OnClickListener
@@ -58,7 +59,7 @@ public class ContactsController implements OnClickListener
         List<String> userNameList = new ArrayList<String>();
 
 		UserContactsUtil.initAllUsers(mContactsActivity);
-		UserContactsUtil.initMyGroups(mContext);
+		UserContactsUtil.initMyGroups(mContactsActivity);
 
     }
 
@@ -113,6 +114,12 @@ public class ContactsController implements OnClickListener
 	public void addUIinELVDataset(UserInfo mNewUserInfo) {
 		mExpandableListAdapter.refreshChildData(mContext.getString(R.string.expandable_list_view_header_users_name), mNewUserInfo);
 	}
+
+	public void addGIinELVDataset(GroupInfo mNewGroupInfo) {
+		mExpandableListAdapter.refreshChildData(mContext.getString(R.string.expandable_list_view_header_groups_name), mNewGroupInfo);
+	}
+
+
 
 
 	@Override

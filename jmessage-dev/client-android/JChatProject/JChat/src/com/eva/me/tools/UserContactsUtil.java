@@ -24,7 +24,9 @@ import java.util.Map;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.callback.GetGroupIDListCallback;
+import cn.jpush.im.android.api.callback.GetGroupInfoCallback;
 import cn.jpush.im.android.api.callback.GetUserInfoCallback;
+import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.UserInfo;
 
 /**
@@ -35,9 +37,9 @@ public class UserContactsUtil {
 
 	/**
 	 * get all user list, through HTTP REST api
-	 * @param mContactsActivity
+	 * @param mContactsFragment
 	 */
-	public static void initAllUsers(final ContactsFragment mContactsActivity) {
+	public static void initAllUsers(final ContactsFragment mContactsFragment) {
 		if (JChatDemoApplication.mRequestQueue != null) {
 			Logger.i(TAG, "Application requestqueue not null");
 //			String url = "http://www.baidu.com";
@@ -62,7 +64,7 @@ public class UserContactsUtil {
 					RespResultAllUserList result = resolveResp(response);
 					Logger.w(TAG, "[JSON]" + result);
 
-					getAllUserInfoFromUserNameList(result != null ? result.getAllUserNameList() : null, mContactsActivity);
+					getAllUserInfoFromUserNameList(result != null ? result.getAllUserNameList() : null, mContactsFragment);
 
 //					//refresh dataset using the new data get by volley
 //					if (mContactsActivity != null) {
@@ -163,10 +165,12 @@ public class UserContactsUtil {
 		return ;
 	}
 
+
+
 	/**
 	 * get all my groups, through JMessageClient GetGroupIDs
 	 */
-	public static void initMyGroups(final Context mContext) {
+	public static void initMyGroups(final ContactsFragment mContactsFragment) {
 		JMessageClient.getGroupIDList(new GetGroupIDListCallback() {
 			@Override
 			public void gotResult(int status, String desc, List<Long> groupIDList) {
@@ -174,13 +178,42 @@ public class UserContactsUtil {
 					//get list....
 					//List<Long> groupIDList;
 					Logger.i(TAG, "[MyGroupIDList] " + groupIDList);
+					getAllGroupInfoFromGroupNameList(groupIDList, mContactsFragment);
 				} else {
 					Logger.i(TAG, "[GetGroupIDListCallback] desc = " + desc);
+					Context mContext = mContactsFragment.getActivity();
 					HandleResponseCode.onHandle(mContext, status, false);
 				}
 
 			}
 		});
 	}
+
+
+	private static void getAllGroupInfoFromGroupNameList(List<Long> groupIdList, final ContactsFragment mContactsFragment) {
+		for (final long groupId :
+				groupIdList) {
+
+			JMessageClient.getGroupInfo(groupId, new GetGroupInfoCallback() {
+				@Override
+				public void gotResult(int status, String desc, GroupInfo groupInfo) {
+					if (mContactsFragment != null) {
+						if (status == 0) {
+							mContactsFragment.getmContactsController().addGIinELVDataset(groupInfo);
+							Logger.i(TAG,"[Add GroupInfo volley] : "+groupInfo);
+						}else {
+							Logger.e(TAG, String.format("[Callback Error] : status code:%d description:%s",status,desc));
+							Context mContext = mContactsFragment.getActivity();
+							HandleResponseCode.onHandle(mContext, status, false);
+						}
+					} else {
+						Logger.e(TAG,"[Null of ContactsFragment]");
+					}
+				}
+			});
+		}
+		return ;
+	}
+
 
 }
