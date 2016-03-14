@@ -56,7 +56,7 @@ public class ContactsController implements OnClickListener
 
 	public void initContacts() {
         //初始化用户名列表
-        List<String> userNameList = new ArrayList<String>();
+//        List<String> userNameList = new ArrayList<String>();
 
 		UserContactsUtil.initAllUsers(mContactsActivity);
 		UserContactsUtil.initMyGroups(mContactsActivity);
@@ -96,6 +96,7 @@ public class ContactsController implements OnClickListener
 		mExpandableListAdapter = new ContactsExpaListAdapter(mContext, headerData, childData);
 		mContactsView.setContLVAdapter(mExpandableListAdapter);
 
+		// the following snippet is useless
 		List<UserInfo> mData = new ArrayList<UserInfo>();
 
 		mListAdapter = new ContactsListAdapter(mContext, mData, mDensityDpi);

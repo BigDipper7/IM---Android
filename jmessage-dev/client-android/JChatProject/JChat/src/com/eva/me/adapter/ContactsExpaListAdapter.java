@@ -1,22 +1,18 @@
 package com.eva.me.adapter;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.eva.me.R;
 import com.eva.me.tools.HandleResponseCode;
 import com.eva.me.tools.Logger;
 import com.eva.me.view.CircleImageView;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,21 +135,21 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         Logger.d(TAG, String.format("[getGroupView] at (int groupPosition %d, boolean isExpanded %b)", groupPosition, isExpanded));
 
-        final HeaderViewHilder headerViewHilder;
+        final HeaderViewHolder headerViewHolder;
 
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.list_view_group_header_item, null);
 
-            headerViewHilder = new HeaderViewHilder();
-            headerViewHilder.groupName = (TextView) convertView.findViewById(R.id.group_name);
+            headerViewHolder = new HeaderViewHolder();
+            headerViewHolder.groupName = (TextView) convertView.findViewById(R.id.group_name);
 
-            convertView.setTag(headerViewHilder);
+            convertView.setTag(headerViewHolder);
         }else {
-            headerViewHilder = (HeaderViewHilder) convertView.getTag();
+            headerViewHolder = (HeaderViewHolder) convertView.getTag();
         }
 
         //init views....
-        headerViewHilder.groupName.setText(getGroup(groupPosition));
+        headerViewHolder.groupName.setText(getGroup(groupPosition));
 
         return convertView;
     }
@@ -227,7 +223,7 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
     }
 
 
-    private static class HeaderViewHilder {
+    private static class HeaderViewHolder {
         TextView groupName;
     }
 
