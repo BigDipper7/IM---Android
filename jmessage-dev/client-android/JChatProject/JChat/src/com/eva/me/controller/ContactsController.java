@@ -229,9 +229,37 @@ public class ContactsController implements OnClickListener
 		return true;
 	}
 
+
 	@Override
 	public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
 		Logger.d(TAG, "[onChildClick] groupPosition: "+groupPosition+" childPosition: "+childPosition);
+		if (mExpandableListAdapter.getGroup(groupPosition).equals(mContext.getString(R.string.expandable_list_view_header_groups_name))) {
+			//if current group is "My Groups List"
+
+		}else if (mExpandableListAdapter.getGroup(groupPosition).equals(mContext.getString(R.string.expandable_list_view_header_users_name))) {
+			//if current group is "My Users List"
+
+			UserInfo mCurrItemUI = (UserInfo) mExpandableListAdapter.getChild(groupPosition, childPosition);
+			String mTargetId = mCurrItemUI.getUserName();
+			Logger.i(TAG, "My Current UI is: " + mCurrItemUI);
+//			startChatDetailActivity(false, mCurrItemUI.getUserName(), 0);
+			Intent intent = new Intent();
+			if (mTargetId.equals(JMessageClient.getMyInfo().getUserName())) {
+				intent.putExtra(JChatDemoApplication.TARGET_ID, mTargetId);
+				Logger.i(TAG, "msg.getFromName() " + mTargetId);
+				intent.setClass(mContext, MeInfoActivity.class);
+				mContext.startActivity(intent);
+			} else {
+//				String targetID = userInfo.getUserName();
+				intent.putExtra(JChatDemoApplication.TARGET_ID, mTargetId);
+//				intent.putExtra(JChatDemoApplication.TARGET_ID, targetID);
+				intent.putExtra(JChatDemoApplication.GROUP_ID, 0L);
+				intent.setClass(mContext, FriendInfoActivity.class);
+				mContactsActivity.startActivityForResult(intent,
+						JChatDemoApplication.REQUEST_CODE_FRIEND_INFO);
+			}
+
+		}
 		return false;
 	}
 
