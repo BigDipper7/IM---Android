@@ -66,4 +66,17 @@ public class ContactsView extends LinearLayout{
 	public void setListener(OnClickListener onClickListener) {
 		mSearchBtnIB.setOnClickListener(onClickListener);
 	}
+
+
+	public void setOnChildClickListener(ExpandableListView.OnChildClickListener onChildClickListener) {
+		mContExpanListView.setOnChildClickListener(onChildClickListener);
+	}
+
+	public void setOnGroupExpandListener(ExpandableListView.OnGroupExpandListener onGroupExpandListener) {
+		mContExpanListView.setOnGroupExpandListener(onGroupExpandListener);
+	}
+
+	public void setOnGroupCollapseListener(ExpandableListView.OnGroupCollapseListener onGroupCollapseListener) {
+		mContExpanListView.setOnGroupCollapseListener(onGroupCollapseListener);
+	}
 }

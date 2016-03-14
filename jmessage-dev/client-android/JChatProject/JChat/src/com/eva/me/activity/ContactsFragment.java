@@ -27,6 +27,9 @@ public class ContactsFragment extends BaseFragment{
 		mContactsView.setListener(mContactsController);
 		mContactsView.setItemListeners(mContactsController);
 		mContactsView.setLongClickListener(mContactsController);
+		mContactsView.setOnChildClickListener(mContactsController);
+		mContactsView.setOnGroupExpandListener(mContactsController);
+		mContactsView.setOnGroupCollapseListener(mContactsController);
     }
 
 	public ContactsController getmContactsController() {

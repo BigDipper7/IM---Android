@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -32,7 +33,9 @@ import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.UserInfo;
 
 public class ContactsController implements OnClickListener
-		, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
+		, AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener
+		, ExpandableListView.OnChildClickListener, ExpandableListView.OnGroupExpandListener
+		, ExpandableListView.OnGroupCollapseListener{
 	private static final String TAG = ContactsController.class.getSimpleName();
 
 	private ContactsView mContactsView;
@@ -224,5 +227,22 @@ public class ContactsController implements OnClickListener
 	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 		Toast.makeText(mContext, String.format("LongClick on position:%d id:%l",position,id), Toast.LENGTH_SHORT).show();
 		return true;
+	}
+
+	@Override
+	public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
+		Logger.d(TAG, "[onChildClick] groupPosition: "+groupPosition+" childPosition: "+childPosition);
+		return false;
+	}
+
+	@Override
+	public void onGroupCollapse(int groupPosition) {
+		Logger.d(TAG, "[onGroupCollapse] onGroupCollapse: groupPosition "+groupPosition);
+	}
+
+	@Override
+	public void onGroupExpand(int groupPosition) {
+		Logger.d(TAG, "[onGroupExpand] onGroupExpand: groupPosition "+groupPosition);
+
 	}
 }
