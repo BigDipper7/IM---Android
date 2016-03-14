@@ -32,12 +32,14 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
     private Map<String,List<Object>> mChildData;
     private Context mContext;
     private LayoutInflater mInflater;
+    private int mDensityDpi;
 
-    public ContactsExpaListAdapter(Context context, List<String> headerData, Map<String, List<Object>> childData) {
+    public ContactsExpaListAdapter(Context context, List<String> headerData, Map<String, List<Object>> childData, int densityDpi) {
         this.mHeaderData = headerData;
         this.mChildData = childData;
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
+        this.mDensityDpi = densityDpi;
     }
 
     //================= data refresh methods ========
@@ -143,6 +145,16 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
             headerViewHolder = new HeaderViewHolder();
             headerViewHolder.groupName = (TextView) convertView.findViewById(R.id.group_name);
 
+
+            if (mDensityDpi <= 160) {
+                headerViewHolder.groupName.setEms(6);
+            }else if (mDensityDpi <= 240) {
+                headerViewHolder.groupName.setEms(8);
+            }else {
+                headerViewHolder.groupName.setEms(10);
+            }
+
+
             convertView.setTag(headerViewHolder);
         }else {
             headerViewHolder = (HeaderViewHolder) convertView.getTag();
@@ -168,6 +180,13 @@ public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
             childViewHolder.userName = (TextView) convertView.findViewById(R.id.name);
             childViewHolder.headIcon = (CircleImageView) convertView.findViewById(R.id.contact_avatar);
 
+            if (mDensityDpi <= 160) {
+                childViewHolder.userName.setEms(6);
+            }else if (mDensityDpi <= 240) {
+                childViewHolder.userName.setEms(8);
+            }else {
+                childViewHolder.userName.setEms(10);
+            }
 
             convertView.setTag(childViewHolder);
         }else {

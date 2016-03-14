@@ -93,7 +93,7 @@ public class ContactsController implements OnClickListener
 		headerData.add(mContext.getString(R.string.expandable_list_view_header_groups_name));
 		headerData.add(mContext.getString(R.string.expandable_list_view_header_users_name));
 
-		mExpandableListAdapter = new ContactsExpaListAdapter(mContext, headerData, childData);
+		mExpandableListAdapter = new ContactsExpaListAdapter(mContext, headerData, childData, mDensityDpi);
 		mContactsView.setContLVAdapter(mExpandableListAdapter);
 
 		// the following snippet is useless
