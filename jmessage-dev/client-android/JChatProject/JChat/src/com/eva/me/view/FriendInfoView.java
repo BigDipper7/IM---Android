@@ -78,7 +78,7 @@ public class FriendInfoView extends LinearLayout {
                 mGenderIv.setImageResource(R.drawable.sex_unknown);
             }
             mAreaTv.setText(userInfo.getRegion());
-            mSignatureTv.setText(userInfo.getSignature());
+            mSignatureTv.setText(TextUtils.isEmpty(userInfo.getSignature())?mContext.getString(R.string.default_user_signature):userInfo.getSignature());
         } else {
             mGenderTv.setText(mContext.getString(R.string.unknown));
             mGenderIv.setImageResource(R.drawable.sex_unknown);

@@ -149,6 +149,8 @@ public class MeInfoView extends LinearLayout {
                 mRegionTv.setText(userInfo.getRegion());
             if (!TextUtils.isEmpty(userInfo.getSignature()))
                 mSignatureTv.setText(userInfo.getSignature());
+            else
+                mSignatureTv.setText(mContext.getString(R.string.default_user_signature));
         }
     }
 
