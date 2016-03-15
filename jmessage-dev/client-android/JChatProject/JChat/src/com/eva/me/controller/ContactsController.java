@@ -242,6 +242,9 @@ public class ContactsController implements OnClickListener
 			UserInfo mCurrItemUI = (UserInfo) mExpandableListAdapter.getChild(groupPosition, childPosition);
 			String mTargetId = mCurrItemUI.getUserName();
 			Logger.i(TAG, "My Current UI is: " + mCurrItemUI);
+			//caching current target
+			ContactsExpaListAdapter.curTargetInfo = mCurrItemUI;
+
 //			startChatDetailActivity(false, mCurrItemUI.getUserName(), 0);
 			Intent intent = new Intent();
 			if (mTargetId.equals(JMessageClient.getMyInfo().getUserName())) {
@@ -270,7 +273,7 @@ public class ContactsController implements OnClickListener
 
 	@Override
 	public void onGroupExpand(int groupPosition) {
-		Logger.d(TAG, "[onGroupExpand] onGroupExpand: groupPosition "+groupPosition);
+		Logger.d(TAG, "[onGroupExpand] onGroupExpand: groupPosition " + groupPosition);
 
 	}
 }

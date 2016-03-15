@@ -27,6 +27,7 @@ import cn.jpush.im.android.api.model.UserInfo;
  */
 public class ContactsExpaListAdapter extends BaseExpandableListAdapter {
     private static final String TAG = ContactsExpaListAdapter.class.getSimpleName();
+    public static Object curTargetInfo = null;
 
     private List<String> mHeaderData;
     private Map<String,List<Object>> mChildData;
