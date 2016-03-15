@@ -13,6 +13,7 @@ import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.UserInfo;
 import cn.jpush.im.android.eventbus.EventBus;
 import com.eva.me.R;
+import com.eva.me.adapter.ContactsExpaListAdapter;
 import com.eva.me.application.JChatDemoApplication;
 import com.eva.me.controller.FriendInfoController;
 import com.eva.me.entity.Event;
@@ -39,17 +40,35 @@ public class FriendInfoActivity extends BaseActivity {
         mFriendInfoView = (FriendInfoView) findViewById(R.id.friend_info_view);
         mTargetId = getIntent().getStringExtra(JChatDemoApplication.TARGET_ID);
         mGroupId = getIntent().getLongExtra(JChatDemoApplication.GROUP_ID, 0);
+
+        ////===== the following friend info showing is using double-caching
+        ////===== get userinfo from exist conversation or groupchat, and present it right now, and then pull
+        ////===== online to present all updated userinfo
         Conversation conv;
         conv = JMessageClient.getSingleConversation(mTargetId);
         if (conv == null && mGroupId == 0) {
+            //==== this means if you get a conv and it is null also your GroupID is 0, this means this
+            //intent did not come from a group chat or a exist single chat, we just can only get all user
+            //info online ==== this is just from contact list
+
+            mUserInfo = ContactsExpaListAdapter.curTargetInfo==null?null: (UserInfo) ContactsExpaListAdapter.curTargetInfo;
             //it indicates that this is a conversation that should be created
             //TODO: this may exits some portatial bug for this conversation should not be established
-            conv = Conversation.createSingleConversation(mTargetId);
+            //conv = Conversation.createSingleConversation(mTargetId);
+            //ALERT: fix bug here, can not create one, because it may present all you created conversation
+            //last time you login
         }else if (conv == null && mGroupId != 0) {
+            //==== this means this conv is null and groupid is not null , it is from exist group conv
+            //we can easily get all this conv from exist group member list, and use it to present the userinfo
+            //right now , double-caching ====
+
             conv = JMessageClient.getGroupConversation(mGroupId);
             GroupInfo groupInfo = (GroupInfo) conv.getTargetInfo();
             mUserInfo = groupInfo.getGroupMemberInfo(mTargetId);
         } else {
+            //=== this means this has exist a conv, and we can simply get all this userinfo just from the exist
+            //conversation ===
+
             mUserInfo = (UserInfo) conv.getTargetInfo();
         }
         mFriendInfoView.initModule();
