@@ -106,11 +106,12 @@ public class ContactsController implements OnClickListener
 		mContactsView.setContLVAdapter(mListAdapter);
 	}
 
-
+	@Deprecated
 	public void refreshLVDataset(List<UserInfo> mNewData) {
 		mListAdapter.setmData(mNewData);
 	}
 
+	@Deprecated
 	public void addUIinLVDataset(UserInfo mNewUserInfo) {
 		mListAdapter.addUserInfo(mNewUserInfo);
 	}
@@ -155,6 +156,7 @@ public class ContactsController implements OnClickListener
 	 * @param id       The row id of the item that was clicked.
 	 */
 	@Override
+	@Deprecated
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		UserInfo mCurrItemUI = mListAdapter.getItem(position);
 		String mTargetId = mCurrItemUI.getUserName();

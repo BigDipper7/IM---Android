@@ -25,8 +25,8 @@ public class ContactsFragment extends BaseFragment{
 
 		mContactsController = new ContactsController(mContactsView, this, mDensityDpi);
 		mContactsView.setListener(mContactsController);
-		mContactsView.setItemListeners(mContactsController);
-		mContactsView.setLongClickListener(mContactsController);
+//		mContactsView.setItemListeners(mContactsController);//emit not used controller
+//		mContactsView.setLongClickListener(mContactsController);
 		mContactsView.setOnChildClickListener(mContactsController);
 		mContactsView.setOnGroupExpandListener(mContactsController);
 		mContactsView.setOnGroupCollapseListener(mContactsController);
