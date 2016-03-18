@@ -243,9 +243,9 @@ public class ChatDetailController implements OnClickListener, OnItemClickListene
                 // 点击群成员项时
                 if (position < mCurrentNum) {
                     if (mMemberInfoList.get(position).getUserName()
-                            .equals(JMessageClient.getMyInfo().getUserName())) {
+                            .equals(JMessageClient.getMyInfo().getUserName())) {//点击的是自己得头像，要跳转到MeInfoActivity
                         intent.setClass(mContext, MeInfoActivity.class);
-                    } else {
+                    } else {//点击的是别的用户的头像，要跳转到FriendInfoActivity
                         intent.putExtra(JChatDemoApplication.TARGET_ID,
                                 mMemberInfoList.get(position).getUserName());
                         intent.putExtra(JChatDemoApplication.GROUP_ID, mGroupId);

@@ -19,10 +19,12 @@ import com.eva.me.controller.FriendInfoController;
 import com.eva.me.entity.Event;
 import com.eva.me.tools.DialogCreator;
 import com.eva.me.tools.HandleResponseCode;
+import com.eva.me.tools.Logger;
 import com.eva.me.tools.NativeImageLoader;
 import com.eva.me.view.FriendInfoView;
 
 public class FriendInfoActivity extends BaseActivity {
+    private static final String TAG = FriendInfoActivity.class.getSimpleName();
 
     private FriendInfoView mFriendInfoView;
     private FriendInfoController mFriendInfoController;
@@ -114,6 +116,7 @@ public class FriendInfoActivity extends BaseActivity {
             setResult(JChatDemoApplication.RESULT_CODE_FRIEND_INFO, intent);
         }
         Conversation conv = JMessageClient.getSingleConversation(mTargetId);
+        Logger.d(TAG, "[startChatActivity] conv:"+conv);
         //如果会话为空，使用EventBus通知会话列表添加新会话
         if (conv == null) {
             conv = Conversation.createSingleConversation(mTargetId);
