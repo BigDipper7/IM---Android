@@ -242,7 +242,7 @@ public class ChatActivity extends BaseActivity {
         } else if (resultCode == JChatDemoApplication.RESULT_CODE_SELECT_PICTURE) {
             handleImgRefresh(data);
         } else if (resultCode == JChatDemoApplication.RESULT_CODE_CHAT_DETAIL) {
-            if (mChatController.isGroup()) {
+            if (mChatController.isGroup()) {//其实就是为了刷新GroupName，因为可能更新过成员或者才更新过组名
                 GroupInfo groupInfo = (GroupInfo) mChatController.getConversation().getTargetInfo();
                 UserInfo userInfo = groupInfo.getGroupMemberInfo(JMessageClient.getMyInfo().getUserName());
                 //如果自己在群聊中，同时显示群人数
