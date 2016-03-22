@@ -27,11 +27,13 @@ import cn.jpush.im.android.api.model.Conversation;
 import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.Message;
 import cn.jpush.im.android.api.model.UserInfo;
+import cn.jpush.im.android.eventbus.EventBus;
 import cn.jpush.im.api.BasicCallback;
 import com.eva.me.R;
 import com.eva.me.activity.ChatActivity;
 import com.eva.me.adapter.MsgListAdapter;
 import com.eva.me.application.JChatDemoApplication;
+import com.eva.me.entity.Event;
 import com.eva.me.tools.FileHelper;
 import com.eva.me.tools.HandleResponseCode;
 import com.eva.me.tools.Logger;
@@ -93,6 +95,7 @@ public class ChatController implements OnClickListener, View.OnTouchListener,
                     Logger.e(TAG, "[initData]: mGroupConv is null, not exits in local. ~~ with groupId:"+mGroupId);
                     mConv = Conversation.createGroupConversation(mGroupId);
                     Logger.i(TAG, "[initData]: mGroupConv create again!");
+                    EventBus.getDefault().post(new Event.LongEvent(mGroupId));
                 }
                 GroupInfo groupInfo = (GroupInfo)mConv.getTargetInfo();
                 Log.d("ChatController", "GroupInfo: " + groupInfo.toString());
