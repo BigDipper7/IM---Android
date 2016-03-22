@@ -43,6 +43,8 @@ public class JChatDemoApplication extends Application {
     public static final String MsgIDs = "msgIDs";
     public static final String PICTURE_DIR = "sdcard/JChatDemo/pictures/";
 
+    public static final String IS_FROM_CONTACTS = "isFromContactsList";
+
     public static RequestQueue mRequestQueue = null;
 
     @Override

@@ -259,6 +259,7 @@ public class ContactsController implements OnClickListener
 				intent.putExtra(JChatDemoApplication.TARGET_ID, mTargetId);
 //				intent.putExtra(JChatDemoApplication.TARGET_ID, targetID);
 				intent.putExtra(JChatDemoApplication.GROUP_ID, 0L);
+				intent.putExtra(JChatDemoApplication.IS_FROM_CONTACTS, true);
 				intent.setClass(mContext, FriendInfoActivity.class);
 				mContactsActivity.startActivityForResult(intent,
 						JChatDemoApplication.REQUEST_CODE_FRIEND_INFO);

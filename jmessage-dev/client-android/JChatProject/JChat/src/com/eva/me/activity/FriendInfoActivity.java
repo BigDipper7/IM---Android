@@ -33,6 +33,7 @@ public class FriendInfoActivity extends BaseActivity {
     private UserInfo mUserInfo;
     private String mNickname;
     private boolean mIsGetAvatar = false;
+    private boolean mIsFromContacts = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,9 @@ public class FriendInfoActivity extends BaseActivity {
         mFriendInfoView = (FriendInfoView) findViewById(R.id.friend_info_view);
         mTargetId = getIntent().getStringExtra(JChatDemoApplication.TARGET_ID);
         mGroupId = getIntent().getLongExtra(JChatDemoApplication.GROUP_ID, 0);
+
+        //add new indicator to show whether is from ContactsList_ELV :
+        mIsFromContacts = getIntent().getBooleanExtra(JChatDemoApplication.IS_FROM_CONTACTS, false);
 
         ////===== the following friend info showing is using double-caching
         ////===== get userinfo from exist conversation or groupchat, and present it right now, and then pull
@@ -103,7 +107,7 @@ public class FriendInfoActivity extends BaseActivity {
      * finish掉此界面
      */
     public void startChatActivity() {
-        if (mGroupId != 0) {
+        if (mGroupId != 0 || mIsFromContacts) {
             Intent intent = new Intent();
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.putExtra(JChatDemoApplication.TARGET_ID, mTargetId);
