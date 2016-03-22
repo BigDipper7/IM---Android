@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import com.eva.me.R;
+import com.eva.me.activity.ChatActivity;
 import com.eva.me.activity.ChatDetailActivity;
 import com.eva.me.activity.ContactsFragment;
 import com.eva.me.activity.FriendInfoActivity;
@@ -237,6 +238,14 @@ public class ContactsController implements OnClickListener
 		Logger.d(TAG, "[onChildClick] groupPosition: "+groupPosition+" childPosition: "+childPosition);
 		if (mExpandableListAdapter.getGroup(groupPosition).equals(mContext.getString(R.string.expandable_list_view_header_groups_name))) {
 			//if current group is "My Groups List"
+
+			GroupInfo mCurrItemGI = (GroupInfo) mExpandableListAdapter.getChild(groupPosition, childPosition);
+			long mGroupId = mCurrItemGI.getGroupID();
+			Intent intent = new Intent();
+			intent.putExtra(JChatDemoApplication.IS_GROUP, true);
+			intent.putExtra(JChatDemoApplication.GROUP_ID, mGroupId);
+			intent.setClass(mContext, ChatActivity.class);
+			mContext.startActivity(intent);
 
 		}else if (mExpandableListAdapter.getGroup(groupPosition).equals(mContext.getString(R.string.expandable_list_view_header_users_name))) {
 			//if current group is "My Users List"
