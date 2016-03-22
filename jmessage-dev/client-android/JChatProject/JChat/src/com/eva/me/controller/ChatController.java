@@ -34,11 +34,14 @@ import com.eva.me.adapter.MsgListAdapter;
 import com.eva.me.application.JChatDemoApplication;
 import com.eva.me.tools.FileHelper;
 import com.eva.me.tools.HandleResponseCode;
+import com.eva.me.tools.Logger;
 import com.eva.me.view.ChatView;
 import com.eva.me.view.DropDownListView;
 
 public class ChatController implements OnClickListener, View.OnTouchListener,
         ChatView.OnSizeChangedListener, ChatView.OnKeyBoardChangeListener {
+
+    private static final String TAG = ChatController.class.getSimpleName();
 
     private ChatView mChatView;
     private ChatActivity mContext;
@@ -86,6 +89,11 @@ public class ChatController implements OnClickListener, View.OnTouchListener,
                     mGroupId = Long.parseLong(mTargetId);
                 }
                 mConv = JMessageClient.getGroupConversation(mGroupId);
+                if (mConv == null) {
+                    Logger.e(TAG, "[initData]: mGroupConv is null, not exits in local. ~~ with groupId:"+mGroupId);
+                    mConv = Conversation.createGroupConversation(mGroupId);
+                    Logger.i(TAG, "[initData]: mGroupConv create again!");
+                }
                 GroupInfo groupInfo = (GroupInfo)mConv.getTargetInfo();
                 Log.d("ChatController", "GroupInfo: " + groupInfo.toString());
                 UserInfo userInfo = groupInfo.getGroupMemberInfo(JMessageClient.getMyInfo().getUserName());
