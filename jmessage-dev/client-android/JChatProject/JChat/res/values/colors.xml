@@ -4,6 +4,7 @@
     <!-- 全局使用的颜色 -->
     <color name="titlebar_bg_color">#3C3C3C</color>
     <color name="loading_view_bg_color">#240075ff</color>
+    <color name="loading_view_spinner_color">#6fb1ff</color>
     <!-- 这是Login相关界面中的颜色 -->
     <color name="login_txt_hint_color">#555555</color>
     <color name="register_split_line_color">#c2d4ec</color>
